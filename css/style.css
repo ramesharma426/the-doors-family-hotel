@@ -69,8 +69,8 @@ a{ color:inherit; }
 .hero-vignette{
   position:absolute; inset:0;
   background:
-    radial-gradient(ellipse at 50% 40%, rgba(0,0,0,0) 30%, rgba(22,18,13,.85) 95%),
-    linear-gradient(to bottom, rgba(22,18,13,.55), rgba(22,18,13,.25) 40%, rgba(22,18,13,.92));
+          radial-gradient(ellipse at 50% 40%, rgba(0,0,0,0) 30%, rgba(22,18,13,.85) 95%),
+          linear-gradient(to bottom, rgba(22,18,13,.55), rgba(22,18,13,.25) 40%, rgba(22,18,13,.92));
 }
 .hero-content{
   position:relative; z-index:2; text-align:center; padding:7rem 1.2rem 4rem;
@@ -179,6 +179,13 @@ section{ position:relative; }
 .menu-panel{ display:none; margin-top:2.6rem; }
 .menu-panel.active{ display:block; }
 .menu-cols{ display:grid; grid-template-columns:1fr 1fr; gap:2.4rem 3.4rem; }
+/* Without this, a grid item's minimum width defaults to the size of its content
+   (here, the 560px-wide momo table), which forces the whole grid — and the
+   section around it — wider than the mobile viewport. overflow:hidden on
+   `section` then silently clips the overflow instead of scrolling it, which is
+   why the momo table and menu prices were disappearing on phones. */
+.menu-sec{ min-width:0; }
+.mi{ min-width:0; }
 .menu-sec h4{
   font-family:'Cinzel'; font-weight:700; font-size:.85rem;
   letter-spacing:.24em; text-transform:uppercase;
@@ -199,6 +206,7 @@ section{ position:relative; }
 .btn.dark-btn:hover{ background:var(--ink); color:var(--paper); }
 
 /* mo:mo table */
+.momo-wrap{ position:relative; }
 .momo-table{ width:100%; border-collapse:collapse; margin-top:.4rem; }
 .momo-table th{
   font-family:'Cinzel'; font-weight:700; font-size:.68rem; letter-spacing:.1em;
