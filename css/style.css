@@ -169,13 +169,52 @@ section{ position:relative; }
   display:flex; justify-content:center; gap:.6rem; margin-top:2.6rem; flex-wrap:wrap;
 }
 .tab-btn{
+  position:relative;
   font-family:'Cinzel'; font-weight:700; font-size:.74rem;
   letter-spacing:.2em; text-transform:uppercase;
   padding:.8rem 1.5rem; cursor:pointer;
   background:transparent; border:1.6px solid var(--ink); color:var(--ink);
-  transition:all .2s;
+  transition:color .2s;
+  isolation:isolate;
 }
-.tab-btn.active, .tab-btn:hover{ background:var(--ink); color:var(--paper); }
+.tab-btn.active, .tab-btn:hover{ color:var(--paper); }
+
+/* Solid face — sits just above the rotating ring, exactly filling the button
+   so only a thin glowing edge peeks out around it */
+.tab-btn::after{
+  content:"";
+  position:absolute; inset:0;
+  background:var(--paper-2);
+  z-index:-1;
+  transition:background .2s;
+}
+.tab-btn.active::after, .tab-btn:hover::after{ background:var(--ink); }
+
+/* Rotating gradient ring, slightly larger than the button — the gradient's
+   angle itself rotates (not the box), so non-square buttons don't warp at
+   the corners like a rotated rectangle would. Runs continuously, whether
+   or not the tab has been clicked. */
+@property --tab-angle{
+  syntax:'<angle>';
+  inherits:false;
+  initial-value:0deg;
+}
+.tab-btn::before{
+  content:"";
+  position:absolute;
+  inset:-3px;
+  background:conic-gradient(from var(--tab-angle),
+  var(--red) 0%, var(--gold) 25%, var(--red) 50%, var(--gold) 75%, var(--red) 100%);
+  z-index:-2;
+  animation:tab-spin 3.2s linear infinite;
+}
+@keyframes tab-spin{ to{ --tab-angle:360deg; } }
+.tab-btn:hover::before{ filter:brightness(1.25); }
+@media (prefers-reduced-motion: reduce){
+  .tab-btn::before{ animation:none; }
+}
+
+
 .menu-panel{ display:none; margin-top:2.6rem; }
 .menu-panel.active{ display:block; }
 .menu-cols{ display:grid; grid-template-columns:1fr 1fr; gap:2.4rem 3.4rem; }
@@ -285,6 +324,27 @@ footer .f-name{
   letter-spacing:.26em; text-transform:uppercase; color:var(--paper);
 }
 footer .f-line{ font-family:'IMFell'; font-style:italic; margin-top:.6rem; font-size:.98rem; }
+
+/* ---------- Social icons (simple, no animation) ---------- */
+.f-social{
+  display:flex; justify-content:center; align-items:center;
+  gap:1.4rem; margin-top:1.8rem;
+}
+.social-btn{
+  width:52px; height:52px;
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  background:#1a1210;
+  border:1.6px solid rgba(200,168,106,.4);
+  transition:transform .25s ease, border-color .25s ease, background .25s ease;
+}
+.social-btn img{ width:22px; height:22px; opacity:.95; }
+.social-btn:hover{
+  transform:translateY(-3px);
+  border-color:var(--gold);
+  background:#241d15;
+}
+
 footer .f-copy{ margin-top:1.4rem; font-size:.85rem; opacity:.65; }
 
 /* ---------- Responsive ---------- */
