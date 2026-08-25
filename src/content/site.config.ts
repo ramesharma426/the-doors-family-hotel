@@ -110,8 +110,9 @@ export const SITE = {
       "https://www.google.com/maps/place/THE+DOOR'S+FAMILY+HOTEL/@27.4175072,85.0443358,20.93z/data=!4m6!3m5!1s0x39eb49602e945b3b:0x15b090b920ce9c3d!8m2!3d27.4175402!4d85.0443936!16s%2Fg%2F11p13j2p6m",
     directions: 'https://www.google.com/maps/dir/?api=1&destination=27.4175402,85.0443936',
     embedMap: 'https://maps.google.com/maps?q=27.4175402,85.0443936&z=16&output=embed',
-    rateUs:
-      "https://www.google.com/maps/place/THE+DOOR%27S+FAMILY+HOTEL/data=!4m3!3m2!1s0x39eb49602e945b3b:0x15b090b920ce9c3d!12e1",
+    // search.google.com (not google.com/maps) so Android doesn't hand this off to the
+    // native Maps app — that app shows the place page instead of the review composer.
+    rateUs: 'https://search.google.com/local/writereview?placeid=ChIJO1uULmBJ6zkRPZzOILmQsBU',
   },
   social: {
     facebook: 'https://www.facebook.com/share/1Dozy64Mpo/?mibextid=wwXIfr',
