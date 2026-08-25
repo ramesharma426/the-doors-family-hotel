@@ -347,6 +347,19 @@ footer .f-line{ font-family:'IMFell'; font-style:italic; margin-top:.6rem; font-
 
 footer .f-copy{ margin-top:1.4rem; font-size:.85rem; opacity:.65; }
 
+/* ---------- Sticky social rail (right edge, vertical) ---------- */
+.social-sticky{
+  position:fixed; right:1rem; top:50%; transform:translateY(-50%);
+  display:flex; flex-direction:column; gap:.7rem; z-index:90;
+}
+.social-sticky .social-btn{ width:42px; height:42px; }
+.social-sticky .social-btn img{ width:18px; height:18px; }
+@media (max-width:720px){
+  .social-sticky{ right:.6rem; gap:.5rem; }
+  .social-sticky .social-btn{ width:36px; height:36px; }
+  .social-sticky .social-btn img{ width:16px; height:16px; }
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 900px){
   .cards{ grid-template-columns:repeat(2,1fr); }
