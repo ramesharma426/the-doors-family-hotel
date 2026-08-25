@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{{site.title}}}</title>
+<meta name="description" content="{{{site.description}}}">
+
+<!-- ===== SEO: canonical + robots (applies to all compliant crawlers — Googlebot, Bingbot, DuckDuckBot, Yandex, Baiduspider, Applebot, etc.) ===== -->
+<link rel="canonical" href="{{{site.canonical}}}">
+<link rel="alternate" hreflang="en" href="{{{site.canonical}}}">
+<link rel="alternate" hreflang="x-default" href="{{{site.canonical}}}">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="{{{site.themeColor}}}">
+<meta name="author" content="The Door's Family Hotel">
+<meta name="keywords" content="{{{site.keywords}}}">
+<meta name="geo.region" content="{{{site.geo.region}}}">
+<meta name="geo.placename" content="{{{site.geo.placename}}}">
+<meta name="geo.position" content="{{{site.geo.position}}}">
+<meta name="ICBM" content="{{{site.geo.icbm}}}">
+<meta name="applicable-device" content="pc,mobile">
+<meta name="msapplication-TileColor" content="#8e2318">
+<meta name="msapplication-TileImage" content="https://thedoorsfamily.com.np/assets/logo/android-chrome-192x192.png">
+
+<!-- ===== SEO: Open Graph (Facebook, WhatsApp, LinkedIn previews) ===== -->
+<meta property="og:type" content="restaurant.restaurant">
+<meta property="og:site_name" content="The Door's Family Hotel">
+<meta property="og:title" content="{{{site.og.title}}}">
+<meta property="og:description" content="{{{site.og.description}}}">
+<meta property="og:image" content="{{{site.og.image}}}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="{{{site.canonical}}}">
+<meta property="og:locale" content="en_US">
+
+<!-- ===== SEO: Twitter/X Card ===== -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{{site.twitter.title}}}">
+<meta name="twitter:description" content="{{{site.twitter.description}}}">
+<meta name="twitter:image" content="{{{site.twitter.image}}}">
+
+<link rel="stylesheet" href="css/style.css?v={{{site.assetVersion}}}">
+<link rel="icon" type="image/png" href="assets/logo/logo.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/logo/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/logo/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="assets/logo/favicon-48x48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="assets/logo/favicon-96x96.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/logo/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<!-- ===== SEO: Structured Data (LocalBusiness/Restaurant) ===== -->
+<script type="application/ld+json">
+{{{jsonLd}}}
+</script>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="#home">
+      <img src="assets/logo/badge_white.png" alt="The Door's Family Hotel logo">
+      <span>The Door's Family Hotel</span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#highlights">Experience</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#live">Live Music</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#guests">Guests</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#visit">Visit Us</a></li>
+      <li><a href="#location">Map</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ================= STICKY SOCIAL RAIL ================= -->
+<div class="social-sticky">
+  <a class="social-btn" href="{{{site.contact.whatsapp}}}" target="_blank" rel="noopener noreferrer" aria-label="Message The Door's Family Hotel on WhatsApp" title="WhatsApp">
+    <img src="assets/icons/whatsapp.svg" alt="" width="20" height="20">
+  </a>
+  <a class="social-btn" href="{{{site.social.facebook}}}" target="_blank" rel="noopener noreferrer" aria-label="Follow The Door's Family Hotel on Facebook" title="Facebook">
+    <img src="assets/icons/facebook.svg" alt="" width="20" height="20">
+  </a>
+  <a class="social-btn" href="{{{site.social.instagram}}}" target="_blank" rel="noopener noreferrer" aria-label="Follow The Door's Family Hotel on Instagram" title="Instagram">
+    <img src="assets/icons/instagram.svg" alt="" width="20" height="20">
+  </a>
+  <a class="social-btn" href="{{{site.social.tiktok}}}" target="_blank" rel="noopener noreferrer" aria-label="Follow The Door's Family Hotel on TikTok" title="TikTok">
+    <img src="assets/icons/tiktok.svg" alt="" width="20" height="20">
+  </a>
+</div>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="home">
+  <div class="hero-bg"></div>
+  <video class="hero-video" autoplay muted loop playsinline poster="assets/img/garden_evening.jpg">
+    <source src="assets/video/hero_garden.mp4" type="video/mp4">
+  </video>
+  <div class="hero-vignette"></div>
+  <div class="hero-content">
+    <h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">The Door's Family Hotel — Hetauda's Rock 'n' Roll Garden Restaurant, Cottages &amp; Live Music Venue</h1>
+    <img class="hero-badge" src="assets/logo/badge_white.png" alt="The Door's Family Hotel — Est. 2018, Hetauda">
+    <p class="hero-quote">{{{site.heroQuote}}}</p>
+    <p class="hero-tags">Outdoor Seating <span class="st">&#9733;</span> Cozy Cottages <span class="st">&#9733;</span> Live Music</p>
+    <div class="hero-cta">
+      <a class="btn solid" href="#menu">View Menu</a>
+      <a class="btn" href="{{{site.contact.rateUs}}}" target="_blank" rel="noopener">Rate Us</a>
+      <a class="btn" href="tel:{{{site.contact.phone}}}">Call Us</a>
+    </div>
+  </div>
+  <a class="hero-scroll" href="#about">&#8595;</a>
+</header>
+
+<!-- ================= ABOUT ================= -->
+<section class="about" id="about">
+  <img class="about-lizard" src="assets/logo/lizard_nobg.png" alt="">
+  <div class="section-inner">
+    <p class="eyebrow">Est. 2018 &middot; Hetauda</p>
+    <h2 class="section-title">A Rock 'n' Roll Garden</h2>
+    <div class="title-rule"></div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p><span class="fell">Tucked away on Ranga Marg</span>, The Door's Family Hotel is Hetauda's
+        home for good food, cold drinks, and loud guitars. Lantern-lit garden paths wind past
+        cozy cottages to an open-air dining terrace with mountain-sunset views.</p>
+        <p>Named in tribute to the legends of rock, our walls carry the spirit of The Doors,
+        Led Zeppelin, Pink Floyd, and more — right down to our Rock 'n' Roll Zone and the
+        iconic red telephone booth waiting for your photos.</p>
+        <p><span class="fell">Every weekend, the stage lights up with live music. On match days,
+        the big screen takes over.</span> Come for the food, stay for the vibe.</p>
+      </div>
+      <img class="about-photo" src="assets/img/cottages_entrance.jpg" alt="Garden entrance with cottages at The Door's Family Hotel">
+    </div>
+  </div>
+</section>
+
+<!-- ================= HIGHLIGHTS ================= -->
+<section class="highlights dark" id="highlights">
+  <img class="deco-lizard hi-lizard" src="assets/logo/lizard_cream.png" alt="">
+  <div class="section-inner">
+    <p class="eyebrow">The Experience</p>
+    <h2 class="section-title" style="color:var(--paper);">What Awaits You</h2>
+    <div class="title-rule"></div>
+    <div class="cards">
+      <div class="card">
+        <div class="slider" data-n="3"><img src="assets/img/garden_path.jpg" alt="Cozy cottages and garden paths" loading="lazy" class="on"><img src="assets/img/cottages_entrance.jpg" alt="Cozy cottages and garden paths" loading="lazy" class=""><img src="assets/img/garden_evening.jpg" alt="Cozy cottages and garden paths" loading="lazy" class=""><div class="dots"><span class="on"></span><span class=""></span><span class=""></span></div></div>
+        <div class="card-body">
+          <h3>Cozy Cottages</h3>
+          <p>Private cottages along lantern-lit garden paths — your own quiet corner for dinner with family and friends.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="slider" data-n="3"><img src="assets/img/stage_night.jpg" alt="Live music on the garden stage" loading="lazy" class="on"><img src="assets/img/live_band.jpg" alt="Live music on the garden stage" loading="lazy" class=""><img src="assets/img/hero_stage.jpg" alt="Live music on the garden stage" loading="lazy" class=""><div class="dots"><span class="on"></span><span class=""></span><span class=""></span></div></div>
+        <div class="card-body">
+          <h3>Live Music</h3>
+          <p>Local artists and bands take our open-air stage every weekend, under the gaze of the Lizard King himself.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="slider" data-n="2"><img src="assets/img/projector_screen.jpg" alt="Big screen projector for match days" loading="lazy" class="on"><img src="assets/img/stage_day.jpg" alt="Big screen projector for match days" loading="lazy" class=""><div class="dots"><span class="on"></span><span class=""></span></div></div>
+        <div class="card-body">
+          <h3>Match Days on the Big Screen</h3>
+          <p>Football, cricket, and every big game — projected large with the crowd roaring around you.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="slider" data-n="3"><img src="assets/img/openair_sunset.jpg" alt="Open-air dining terrace" loading="lazy" class="on"><img src="assets/img/guests.jpg" alt="Open-air dining terrace" loading="lazy" class=""><img src="assets/img/rainy_deck.jpg" alt="Open-air dining terrace" loading="lazy" class=""><div class="dots"><span class="on"></span><span class=""></span><span class=""></span></div></div>
+        <div class="card-body">
+          <h3>Open-Air Dining</h3>
+          <p>Wooden tables under a sheltered terrace, open to the breeze and Hetauda's finest sunsets.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="slider" data-n="3"><img src="assets/img/rocknroll_zone.jpg" alt="Rock and roll zone and bar" loading="lazy" class="on"><img src="assets/img/bar_kiosk.jpg" alt="Rock and roll zone and bar" loading="lazy" class=""><img src="assets/img/moon_wall.jpg" alt="Rock and roll zone and bar" loading="lazy" class=""><div class="dots"><span class="on"></span><span class=""></span><span class=""></span></div></div>
+        <div class="card-body">
+          <h3>Rock 'n' Roll Zone</h3>
+          <p>A wall of legends — band art, classic tees, and The Doors bar celebrating the greatest era of music.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="slider" data-n="2"><img src="assets/img/parking.jpg" alt="Large parking area" loading="lazy" class="on"><img src="assets/img/aerial_night.jpg" alt="Large parking area" loading="lazy" class=""><div class="dots"><span class="on"></span><span class=""></span></div></div>
+        <div class="card-body">
+          <h3>Large Parking</h3>
+          <p>Spacious, hassle-free parking for bikes and cars — roll in, park easy, and head straight to your table.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MENU ================= -->
+<section class="menu" id="menu">
+  <img class="deco-lizard menu-lizard" src="assets/logo/lizard_nobg.png" alt="">
+  <div class="section-inner">
+    <p class="eyebrow">Fresh From The Kitchen &middot; Straight From The Bar</p>
+    <h2 class="section-title">Our Menu</h2>
+    <div class="title-rule"></div>
+
+    <div class="menu-tabs">
+      {{#each menuPanels}}
+      <button class="tab-btn{{#if this.active}} active{{/if}}" data-panel="panel-{{this.key}}">{{{this.label}}}</button>
+      {{/each}}
+    </div>
+
+    {{#each menuPanels}}
+    <div class="menu-panel{{#if this.active}} active{{/if}}" id="panel-{{this.key}}">
+      <div class="menu-cols">
+        {{#each this.blocks}}
+          {{#if this.items}}
+          <div class="menu-sec">
+            <h4>{{this.title}}</h4>
+            {{#each this.items}}
+            <div class="mi"><span class="n">{{{this.name}}}</span><span class="dots"></span><span class="p">{{this.price}}</span></div>
+            {{/each}}
+          </div>
+          {{else}}
+          <div class="menu-sec" style="grid-column:1/-1;">
+            <h4>{{this.title}}</h4>
+            <div class="momo-wrap">
+            <table class="momo-table">
+              <tr>{{#each this.columns}}<th>{{this}}</th>{{/each}}</tr>
+              {{#each this.rows}}
+              <tr><td>{{{this.label}}}</td>{{#each this.values}}<td>{{this}}</td>{{/each}}</tr>
+              {{/each}}
+            </table>
+            </div>
+          </div>
+          {{/if}}
+        {{/each}}
+      </div>
+    </div>
+    {{/each}}
+
+    <p class="menu-note">All prices in NPR. Please drink responsibly.</p>
+    <div class="menu-downloads">
+      <a class="btn dark-btn" href="assets/menu/food_menu.pdf" download>Download Food Menu</a>
+      <a class="btn dark-btn" href="assets/menu/bar_menu.pdf" download>Download Bar Menu</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LIVE STRIP ================= -->
+<section class="live" id="live">
+  <div class="section-inner">
+    <img class="live-badge" src="assets/logo/badge_white.png" alt="">
+    <h2>Live Music Every Weekend</h2>
+    <p>Acoustic nights, full-band sets, and special event evenings on our garden stage.
+    Follow the music down Ranga Marg &mdash; you'll hear us before you see us.</p>
+    <div class="hero-cta" style="margin-top:2rem;">
+      <a class="btn" href="tel:{{{site.contact.phone}}}">Book a Table</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= EVENTS ================= -->
+<section class="events" id="events">
+  <img class="deco-lizard ev-lizard" src="assets/logo/lizard_nobg.png" alt="">
+  <div class="section-inner">
+    <p class="eyebrow">Celebrations</p>
+    <h2 class="section-title">Events &amp; Parties</h2>
+    <div class="title-rule"></div>
+    <div class="events-grid">
+      <div class="slider slider-lg" data-n="3">
+        <img src="assets/img/event_celebration.jpg" alt="New Year celebration with confetti on stage" class="on">
+        <img src="assets/img/event_hosts.jpg" alt="Hosts on the celebration stage">
+        <img src="assets/img/newyear.jpg" alt="Happy New Year on stage">
+        <div class="dots"><span class="on"></span><span></span><span></span></div>
+      </div>
+      <div class="events-text">
+        <p><span class="fell">When Hetauda celebrates, it celebrates here.</span>
+        From our legendary New Year bashes with confetti raining over the stage, to birthdays,
+        anniversaries, and private parties in the garden &mdash; we host it all, and we host it big.</p>
+        <p>Book the stage, the cottages, or the whole garden. Live music, big screen,
+        full kitchen and bar &mdash; your celebration, our stage.</p>
+        <div class="hero-cta" style="justify-content:flex-start; margin-top:1.6rem;">
+          <a class="btn dark-btn" href="tel:{{{site.contact.phone}}}">Plan Your Event</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GALLERY ================= -->
+<section class="gallery" id="gallery">
+  <img class="deco-lizard gal-lizard" src="assets/logo/lizard_nobg.png" alt="">
+  <div class="section-inner">
+    <p class="eyebrow">Moments</p>
+    <h2 class="section-title">Around The Garden</h2>
+    <div class="title-rule"></div>
+    <div class="carousel v3" id="car-gallery">
+      <div class="c-track">
+        <figure class="c-slide">
+          <a class="lbx" href="assets/img/live_band.jpg"><img src="assets/img/live_band.jpg" alt="Band performing live on stage" loading="lazy"></a>
+          <figcaption>Live on the garden stage</figcaption>
+        </figure>
+        <figure class="c-slide">
+          <a class="lbx" href="assets/img/telephone_booth.jpg"><img src="assets/img/telephone_booth.jpg" alt="Iconic red telephone booth" loading="lazy"></a>
+          <figcaption>The famous red booth</figcaption>
+        </figure>
+        <figure class="c-slide">
+          <a class="lbx" href="assets/img/garden_evening.jpg"><img src="assets/img/garden_evening.jpg" alt="Garden path in the evening" loading="lazy"></a>
+          <figcaption>Blue hour on the garden path</figcaption>
+        </figure>
+        <figure class="c-slide">
+          <a class="lbx" href="assets/img/neon_sign.jpg"><img src="assets/img/neon_sign.jpg" alt="Neon sign glowing in the rain" loading="lazy"></a>
+          <figcaption>Neon nights, monsoon magic</figcaption>
+        </figure>
+        <figure class="c-slide">
+          <a class="lbx" href="assets/img/moon_wall.jpg"><img src="assets/img/moon_wall.jpg" alt="Moon and mountains art wall" loading="lazy"></a>
+          <figcaption>The moon &amp; mountains wall</figcaption>
+        </figure>
+        <figure class="c-slide">
+          <a class="lbx" href="assets/img/event_celebration.jpg"><img src="assets/img/event_celebration.jpg" alt="New Year celebration" loading="lazy"></a>
+          <figcaption>Confetti at midnight</figcaption>
+        </figure>
+        <figure class="c-slide">
+          <a class="lbx" href="assets/img/event_orange.jpg"><img src="assets/img/event_orange.jpg" alt="Special evening with guests" loading="lazy"></a>
+          <figcaption>Special evenings, special guests</figcaption>
+        </figure>
+        <figure class="c-slide">
+          <a class="lbx" href="assets/img/owners_night.jpg"><img src="assets/img/owners_night.jpg" alt="Evening under the garden lamps" loading="lazy"></a>
+          <figcaption>Under the garden lamps</figcaption>
+        </figure>
+        <figure class="c-slide">
+          <a class="lbx" href="assets/img/cottages_entrance.jpg"><img src="assets/img/cottages_entrance.jpg" alt="Garden entrance arch" loading="lazy"></a>
+          <figcaption>Welcome through the arch</figcaption>
+        </figure>
+      </div>
+      <div class="c-dots"></div>
+    </div>
+  </div>
+</section>
+
+<div class="lightbox"><button class="lightbox-close" aria-label="Close">&times;</button><img src="" alt=""></div>
+
+
+
+<!-- ================= HAPPY GUESTS ================= -->
+<section class="happy" id="guests">
+  <div class="section-inner">
+    <p class="eyebrow">You, At The Door's</p>
+    <h2 class="section-title">Happy Guests</h2>
+    <div class="title-rule"></div>
+    <div class="carousel v3" id="car-guests">
+      <div class="c-track">
+        <figure class="c-slide">
+          <a class="lbx" href="assets/img/guests_table.jpg"><img src="assets/img/guests_table.jpg" alt="Friends enjoying food and drinks in the garden" loading="lazy"></a>
+          <figcaption>Long lunches with the squad</figcaption>
+        </figure>
+        <figure class="c-slide">
+          <a class="lbx" href="assets/img/ny_friends.jpg"><img src="assets/img/ny_friends.jpg" alt="Friends celebrating on New Year night" loading="lazy"></a>
+          <figcaption>New Year, new memories</figcaption>
+        </figure>
+        <figure class="c-slide">
+          <a class="lbx" href="assets/img/wings_mural.jpg"><img src="assets/img/wings_mural.jpg" alt="Guests posing at the angel wings mural" loading="lazy"></a>
+          <figcaption>Spread your wings at The Doors mural</figcaption>
+        </figure>
+        <figure class="c-slide">
+          <a class="lbx" href="assets/img/family_visit.jpg"><img src="assets/img/family_visit.jpg" alt="Family evening at the garden" loading="lazy"></a>
+          <figcaption>Three generations, one table</figcaption>
+        </figure>
+        <figure class="c-slide">
+          <a class="lbx" href="assets/img/ny_trio.jpg"><img src="assets/img/ny_trio.jpg" alt="Friends dressed up for the celebration" loading="lazy"></a>
+          <figcaption>Dressed up for the big night</figcaption>
+        </figure>
+        <figure class="c-slide">
+          <a class="lbx" href="assets/img/guests.jpg"><img src="assets/img/guests.jpg" alt="Guests smiling at their table" loading="lazy"></a>
+          <figcaption>Cozy corners, warm smiles</figcaption>
+        </figure>
+      </div>
+      <div class="c-dots"></div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- ================= TEAM ================= -->
+<section class="team" id="team">
+  <div class="section-inner">
+    <p class="eyebrow">The Family Behind The Door's</p>
+    <h2 class="section-title">Meet The Team</h2>
+    <div class="title-rule"></div>
+    <div class="carousel v2" id="car-team">
+      <div class="c-track">
+        <figure class="c-slide">
+          <a class="lbx" href="assets/img/team.jpg"><img src="assets/img/team.jpg" alt="Service team smiling" loading="lazy"></a>
+          <figcaption>Always smiling, always serving</figcaption>
+        </figure>
+        <figure class="c-slide">
+          <a class="lbx" href="assets/img/team_service.jpg"><img src="assets/img/team_service.jpg" alt="Our service crew" loading="lazy"></a>
+          <figcaption>The crew that keeps the garden glowing</figcaption>
+        </figure>
+        <figure class="c-slide">
+          <a class="lbx" href="assets/img/team_bar.jpg"><img src="assets/img/team_bar.jpg" alt="Bar and kitchen team" loading="lazy"></a>
+          <figcaption>Behind the bar, behind the flavors</figcaption>
+        </figure>
+      </div>
+      <div class="c-dots"></div>
+    </div>
+
+    <p class="team-caption">The smiling crew that keeps the plates full, the drinks cold,
+    and the good times rolling &mdash; every single day.</p>
+  </div>
+</section>
+
+<!-- ================= VIDEO REEL ================= -->
+<section class="reel dark" id="reel">
+  <div class="section-inner">
+    <p class="eyebrow" style="color:var(--gold);">In Motion</p>
+    <h2 class="section-title" style="color:var(--paper);">Feel The Vibe</h2>
+    <div class="title-rule"></div>
+    <div class="reel-grid">
+      <figure>
+        <video muted loop playsinline preload="metadata" poster="assets/img/live_band.jpg">
+          <source src="assets/video/clip_live.mp4" type="video/mp4">
+        </video>
+        <figcaption>Live on the garden stage</figcaption>
+      </figure>
+      <figure>
+        <video muted loop playsinline preload="metadata" poster="assets/img/aerial_night.jpg">
+          <source src="assets/video/clip_aerial.mp4" type="video/mp4">
+        </video>
+        <figcaption>The garden from above, after dark</figcaption>
+      </figure>
+      <figure>
+        <video muted loop playsinline preload="metadata" poster="assets/img/neon_sign.jpg">
+          <source src="assets/video/clip_neon.mp4" type="video/mp4">
+        </video>
+        <figcaption>Neon nights, monsoon magic</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VISIT ================= -->
+<section class="visit dark" id="visit">
+  <img class="deco-lizard visit-lizard" src="assets/logo/lizard_cream.png" alt="">
+  <div class="section-inner">
+    <p class="eyebrow" style="color:var(--gold);">Find Us</p>
+    <h2 class="section-title" style="color:var(--paper);">Visit Us</h2>
+    <div class="title-rule"></div>
+    <div class="visit-grid">
+      <div class="visit-item">
+        <h3>Address</h3>
+        <p>{{{site.contact.address}}}<br>{{{site.contact.addressLine2}}}</p>
+        <p><a href="{{{site.contact.mapListing}}}" target="_blank" rel="noopener">Open in Google Maps &rarr;</a></p>
+      </div>
+      <div class="visit-item">
+        <h3>Call Us</h3>
+        <p><a href="tel:{{{site.contact.phone}}}">{{{site.contact.phoneDisplay}}}</a></p>
+        <p>Reservations &amp; event bookings</p>
+      </div>
+      <div class="visit-item">
+        <h3>Hours</h3>
+        <p>Open every day<br>Live music on weekends</p>
+      </div>
+    </div>
+    <div class="visit-cta">
+      <a class="btn" href="tel:{{{site.contact.phone}}}">Reserve Your Table</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= LOCATION MAP ================= -->
+<section class="location" id="location">
+  <div class="map-full">
+    <iframe
+      src="{{{site.contact.embedMap}}}"
+      loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
+      title="Map — The Door's Family Hotel, Hetauda"></iframe>
+    <div class="gmap-card">
+      <div class="gmap-head">
+        <div>
+          <h3>The Door&rsquo;s Family Hotel</h3>
+          <p class="gmap-addr">Ward 5, Ranga Marg, Hetauda 44100</p>
+          <p class="gmap-rating">5.0 <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span></p>
+        </div>
+        <div class="gmap-actions">
+          <a href="{{{site.contact.mapListing}}}" target="_blank" rel="noopener" title="View on Google Maps" aria-label="View on Google Maps">&#8599;</a>
+          <a href="{{{site.contact.directions}}}" target="_blank" rel="noopener" title="Get directions" aria-label="Get directions">&#10148;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="f-badge-row">
+    <img class="f-liz flip" src="assets/logo/lizard_cream.png" alt="">
+    <img class="f-badge" src="assets/logo/badge_white.png" alt="The Door's Family Hotel badge">
+    <img class="f-liz" src="assets/logo/lizard_cream.png" alt="">
+  </div>
+  <div class="f-name">The Door's Family Hotel &middot; Hetauda</div>
+  <div class="f-line">{{{site.heroQuote}}}</div>
+
+  <div class="f-copy">{{{site.footerCopy}}}</div>
+  <div class="f-credit">Created &amp; maintained by <a href="https://sharma-ramesh.com.np" target="_blank" rel="noopener noreferrer">Ramesh Sharma</a></div>
+</footer>
+
+<script src="js/main.js?v={{{site.assetVersion}}}"></script>
+</body>
+</html>
