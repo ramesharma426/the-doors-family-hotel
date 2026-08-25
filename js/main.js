@@ -11,14 +11,33 @@ links.querySelectorAll('a').forEach(a =>
 // Menu tabs
 const tabBtns = document.querySelectorAll('.tab-btn');
 const panels = document.querySelectorAll('.menu-panel');
+
+function activateMenuTab(key) {
+  const btn = document.querySelector(`.tab-btn[data-panel="panel-${key}"]`);
+  const panel = document.getElementById(`panel-${key}`);
+  if (!btn || !panel) return false;
+  tabBtns.forEach(b => b.classList.remove('active'));
+  panels.forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  panel.classList.add('active');
+  return true;
+}
+
 tabBtns.forEach(btn => {
   btn.addEventListener('click', () => {
-    tabBtns.forEach(b => b.classList.remove('active'));
-    panels.forEach(p => p.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById(btn.dataset.panel).classList.add('active');
+    const key = btn.dataset.panel.replace('panel-', '');
+    activateMenuTab(key);
+    const url = new URL(window.location);
+    url.searchParams.set('menu', key);
+    history.replaceState(null, '', url);
   });
 });
+
+// Deep link from QR codes: e.g. thedoorsfamily.com.np/?menu=food, ?menu=cafe, ?menu=bar
+const menuParam = new URLSearchParams(window.location.search).get('menu');
+if (menuParam && activateMenuTab(menuParam)) {
+  document.getElementById('menu').scrollIntoView({ block: 'start' });
+}
 
 // Gallery lightbox
 const lightbox = document.querySelector('.lightbox');
