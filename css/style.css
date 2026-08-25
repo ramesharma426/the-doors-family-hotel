@@ -343,6 +343,8 @@ footer .f-line{ font-family:'IMFell'; font-style:italic; margin-top:.6rem; font-
 }
 
 footer .f-copy{ margin-top:1.4rem; font-size:.85rem; opacity:.65; }
+footer .f-credit{ margin-top:.5rem; font-size:.7rem; opacity:.5; }
+footer .f-credit a{ color:inherit; }
 
 /* ---------- Sticky social rail (bottom-right corner, vertical) ---------- */
 .social-sticky{
