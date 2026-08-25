@@ -33,10 +33,16 @@ tabBtns.forEach(btn => {
   });
 });
 
-// Deep link from QR codes: e.g. thedoorsfamily.com.np/?menu=food, ?menu=cafe, ?menu=bar
+// Deep link from QR codes: e.g. thedoorsfamily.com.np/?menu=food#menu, ?menu=cafe#menu, ?menu=bar#menu
+// (food already renders by default, so plain #menu with no query works too)
 const menuParam = new URLSearchParams(window.location.search).get('menu');
-if (menuParam && activateMenuTab(menuParam)) {
-  document.getElementById('menu').scrollIntoView({ block: 'start' });
+if (menuParam) activateMenuTab(menuParam);
+
+if (window.location.hash !== '#menu' && menuParam) {
+  // No native anchor to rely on — scroll manually once the page (images/video) has
+  // settled, so a late layout shift on mobile doesn't leave the viewport off-target.
+  const scrollToMenu = () => document.getElementById('menu').scrollIntoView({ block: 'start' });
+  window.addEventListener('load', () => requestAnimationFrame(scrollToMenu));
 }
 
 // Gallery lightbox
