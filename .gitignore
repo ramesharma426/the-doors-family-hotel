@@ -9,3 +9,6 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Generated QR codes (printable assets, not part of the site)
+assets/qr/

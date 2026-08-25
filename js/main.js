@@ -1,5 +1,16 @@
 // The Door's Family Hotel — site interactions
 
+// Hide the sticky social rail while the menu section is on screen —
+// in the bottom-right corner it would otherwise sit on top of the price list on mobile.
+const socialSticky = document.querySelector('.social-sticky');
+const menuSection = document.getElementById('menu');
+if (socialSticky && menuSection && 'IntersectionObserver' in window) {
+  new IntersectionObserver(
+    entries => entries.forEach(en => socialSticky.classList.toggle('is-hidden', en.isIntersecting)),
+    { threshold: 0.05 }
+  ).observe(menuSection);
+}
+
 // Mobile nav
 const toggle = document.querySelector('.nav-toggle');
 const links = document.querySelector('.nav-links');
@@ -44,6 +55,18 @@ if (window.location.hash !== '#menu' && menuParam) {
   const scrollToMenu = () => document.getElementById('menu').scrollIntoView({ block: 'start' });
   window.addEventListener('load', () => requestAnimationFrame(scrollToMenu));
 }
+
+// The ?menu= param is only meaningful on the menu section — drop it when navigating
+// to any other in-page anchor so it doesn't linger in the URL (e.g. ?menu=food#about).
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  const targetId = a.getAttribute('href').slice(1);
+  if (targetId === 'menu') return;
+  a.addEventListener('click', () => {
+    if (window.location.search) {
+      history.replaceState(null, '', window.location.pathname);
+    }
+  });
+});
 
 // Gallery lightbox
 const lightbox = document.querySelector('.lightbox');

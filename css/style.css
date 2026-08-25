@@ -326,10 +326,6 @@ footer .f-name{
 footer .f-line{ font-family:'IMFell'; font-style:italic; margin-top:.6rem; font-size:.98rem; }
 
 /* ---------- Social icons (simple, no animation) ---------- */
-.f-social{
-  display:flex; justify-content:center; align-items:center;
-  gap:1.4rem; margin-top:1.8rem;
-}
 .social-btn{
   width:52px; height:52px;
   border-radius:50%;
@@ -347,15 +343,19 @@ footer .f-line{ font-family:'IMFell'; font-style:italic; margin-top:.6rem; font-
 
 footer .f-copy{ margin-top:1.4rem; font-size:.85rem; opacity:.65; }
 
-/* ---------- Sticky social rail (right edge, vertical) ---------- */
+/* ---------- Sticky social rail (bottom-right corner, vertical) ---------- */
 .social-sticky{
-  position:fixed; right:1rem; top:50%; transform:translateY(-50%);
+  position:fixed; right:1rem; bottom:1rem;
   display:flex; flex-direction:column; gap:.7rem; z-index:90;
+  transition:opacity .2s ease, transform .2s ease;
+}
+.social-sticky.is-hidden{
+  opacity:0; transform:translateY(12px); pointer-events:none;
 }
 .social-sticky .social-btn{ width:42px; height:42px; }
 .social-sticky .social-btn img{ width:18px; height:18px; }
 @media (max-width:720px){
-  .social-sticky{ right:.6rem; gap:.5rem; }
+  .social-sticky{ right:.6rem; bottom:.6rem; gap:.5rem; }
   .social-sticky .social-btn{ width:36px; height:36px; }
   .social-sticky .social-btn img{ width:16px; height:16px; }
 }
