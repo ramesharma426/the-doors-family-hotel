@@ -330,7 +330,8 @@ footer .f-line{ font-family:'IMFell'; font-style:italic; margin-top:.6rem; font-
   width:52px; height:52px;
   border-radius:50%;
   display:flex; align-items:center; justify-content:center;
-  background:#1a1210;
+  background:rgba(26,18,16,.35);
+  backdrop-filter:blur(6px);
   border:1.6px solid rgba(200,168,106,.4);
   transition:transform .25s ease, border-color .25s ease, background .25s ease;
 }
@@ -338,7 +339,7 @@ footer .f-line{ font-family:'IMFell'; font-style:italic; margin-top:.6rem; font-
 .social-btn:hover{
   transform:translateY(-3px);
   border-color:var(--gold);
-  background:#241d15;
+  background:rgba(36,29,21,.55);
 }
 
 footer .f-copy{ margin-top:1.4rem; font-size:.85rem; opacity:.65; }
