@@ -1,8 +1,16 @@
-# OS
+# Node
+node_modules/
+
+# Build artifacts — the GitHub Actions workflow (.github/workflows/deploy.yml)
+# runs `npm run build:static` fresh on every push, so docs/ doesn't need to be committed.
+dist/
+docs/
+*.tsbuildinfo
+
+# OS / editor
 .DS_Store
 Thumbs.db
-
-# Editor/IDE
+.vscode/
 *.swp
 *.swo
 *~
@@ -10,5 +18,9 @@ Thumbs.db
 # Logs
 *.log
 
-# Generated QR codes (printable assets, not part of the site)
-assets/qr/
+# Env files
+.env
+.env.local
+
+# Test coverage
+coverage/
