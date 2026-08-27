@@ -691,5 +691,5 @@ html{ scroll-padding-top:72px; }
   .slider-lg{ height:320px; }
 }
 
-/* reel videos: no player chrome, clean tiles */
-.reel-grid video{ pointer-events:none; }
+/* reel/team videos: no player chrome, clean tiles */
+.reel-grid video, .team .c-slide video{ pointer-events:none; }

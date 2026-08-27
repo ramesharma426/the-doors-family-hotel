@@ -197,8 +197,8 @@ document.querySelectorAll('a.lbx').forEach(a => {
   });
 });
 
-// ---------- Auto-play reel videos when scrolled into view ----------
-const reelVideos = document.querySelectorAll('.reel-grid video');
+// ---------- Auto-play reel/team videos when scrolled into view ----------
+const reelVideos = document.querySelectorAll('.reel-grid video, .team .c-slide video');
 if ('IntersectionObserver' in window && reelVideos.length){
   const vobs = new IntersectionObserver(entries => {
     entries.forEach(en => {

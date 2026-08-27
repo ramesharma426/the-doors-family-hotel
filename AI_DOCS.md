@@ -10,6 +10,20 @@ count) isn't present anywhere in the current site, it's called out explicitly un
 
 ---
 
+## 0. Working Agreement (AI Assistant Rules)
+
+- **Never run `git commit` or `git push` on your own initiative** — not even after a
+  change is finished, built, and verified locally. Pushing to `master` also
+  auto-deploys to production via GitHub Actions, so an unrequested push ships
+  straight to the live site.
+- Finish the change, build it, and verify it (typecheck, local dev server, static
+  export, curl checks — whatever applies), then stop and report what changed and
+  that it's ready. Wait for the user to explicitly ask for a commit and/or push.
+- If the user says "commit" or "push" (or similar) without it being obvious the
+  request already covers both steps, **ask for permission before running either
+  command** rather than assuming — confirm scope (which files, commit vs. push vs.
+  both) before acting.
+
 ## 1. Business Profile
 
 | Field | Value |
