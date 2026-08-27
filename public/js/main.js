@@ -83,19 +83,45 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') lightbox.classList.remove('open');
 });
 
-// Card photo sliders — auto-rotate each category's photos
+// Card photo sliders — auto-rotate each category's photos, swipeable on touch
 document.querySelectorAll('.slider').forEach(slider => {
   const imgs = slider.querySelectorAll('img');
   const dots = slider.querySelectorAll('.dots span');
   if (imgs.length < 2) return;
-  let i = 0;
-  setInterval(() => {
+  let i = 0, timer;
+
+  function show(next){
     imgs[i].classList.remove('on');
-    dots[i].classList.remove('on');
-    i = (i + 1) % imgs.length;
+    dots[i] && dots[i].classList.remove('on');
+    i = (next + imgs.length) % imgs.length;
     imgs[i].classList.add('on');
-    dots[i].classList.add('on');
-  }, 3800);
+    dots[i] && dots[i].classList.add('on');
+  }
+  function restart(){ clearInterval(timer); timer = setInterval(() => show(i + 1), 3800); }
+
+  let startX = 0, startY = 0, touching = false;
+  slider.addEventListener('touchstart', e => {
+    if (e.touches.length !== 1) return;
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    touching = true;
+    clearInterval(timer);
+  }, { passive: true });
+  slider.addEventListener('touchmove', e => {
+    if (!touching) return;
+    const dx = e.touches[0].clientX - startX;
+    const dy = e.touches[0].clientY - startY;
+    if (Math.abs(dx) > Math.abs(dy)) e.preventDefault();
+  }, { passive: false });
+  slider.addEventListener('touchend', e => {
+    if (!touching) return;
+    touching = false;
+    const dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 40) show(i + (dx < 0 ? 1 : -1));
+    restart();
+  });
+
+  restart();
 });
 
 // ---------- Generic auto-moving carousels ----------
@@ -129,11 +155,35 @@ document.querySelectorAll('.carousel').forEach(car => {
     dotsBox.querySelectorAll('span').forEach((d,i)=>d.classList.toggle('on', i===idx));
   }
   function next(){ idx = (idx + 1) % pages(); update(); }
+  function prev(){ idx = (idx - 1 + pages()) % pages(); update(); }
   function restart(){ clearInterval(timer); timer = setInterval(next, 3500); }
 
   car.addEventListener('pointerenter', () => clearInterval(timer));
   car.addEventListener('pointerleave', restart);
   window.addEventListener('resize', () => { idx = Math.min(idx, pages()-1); renderDots(); update(); });
+
+  // Swipe support for touch screens
+  let startX = 0, startY = 0, touching = false;
+  track.addEventListener('touchstart', e => {
+    if (e.touches.length !== 1) return;
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    touching = true;
+    clearInterval(timer);
+  }, { passive: true });
+  track.addEventListener('touchmove', e => {
+    if (!touching) return;
+    const dx = e.touches[0].clientX - startX;
+    const dy = e.touches[0].clientY - startY;
+    if (Math.abs(dx) > Math.abs(dy)) e.preventDefault();
+  }, { passive: false });
+  track.addEventListener('touchend', e => {
+    if (!touching) return;
+    touching = false;
+    const dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 40) (dx < 0 ? next() : prev());
+    restart();
+  });
 
   renderDots(); update(); restart();
 });
