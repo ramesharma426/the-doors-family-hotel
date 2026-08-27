@@ -117,8 +117,13 @@ document.querySelectorAll('.slider').forEach(slider => {
     if (!touching) return;
     touching = false;
     const dx = e.changedTouches[0].clientX - startX;
-    if (Math.abs(dx) > 40) show(i + (dx < 0 ? 1 : -1));
-    restart();
+    if (Math.abs(dx) > 40) {
+      // Manual swipe — stay put, don't auto-advance away from it.
+      show(i + (dx < 0 ? 1 : -1));
+      clearInterval(timer);
+    } else {
+      restart();
+    }
   });
 
   restart();
@@ -181,8 +186,13 @@ document.querySelectorAll('.carousel').forEach(car => {
     if (!touching) return;
     touching = false;
     const dx = e.changedTouches[0].clientX - startX;
-    if (Math.abs(dx) > 40) (dx < 0 ? next() : prev());
-    restart();
+    if (Math.abs(dx) > 40) {
+      // Manual swipe — stay put, don't auto-advance away from it.
+      (dx < 0 ? next() : prev());
+      clearInterval(timer);
+    } else {
+      restart();
+    }
   });
 
   renderDots(); update(); restart();
