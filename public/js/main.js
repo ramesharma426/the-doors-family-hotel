@@ -1,5 +1,9 @@
 // The Door's Family Hotel — site interactions
 
+// Inertia-smooths wheel/touch scroll and eases in-page anchor navigation
+// (falls back to plain native scrolling if the vendor script fails to load).
+const lenis = typeof Lenis !== 'undefined' ? new Lenis({ anchors: true, autoRaf: true }) : null;
+
 // Hide the sticky social rail while the menu section is on screen —
 // in the bottom-right corner it would otherwise sit on top of the price list on mobile.
 const socialSticky = document.querySelector('.social-sticky');
@@ -52,7 +56,11 @@ if (menuParam) activateMenuTab(menuParam);
 if (window.location.hash !== '#menu' && menuParam) {
   // No native anchor to rely on — scroll manually once the page (images/video) has
   // settled, so a late layout shift on mobile doesn't leave the viewport off-target.
-  const scrollToMenu = () => document.getElementById('menu').scrollIntoView({ block: 'start' });
+  const scrollToMenu = () => {
+    const el = document.getElementById('menu');
+    if (lenis) lenis.scrollTo(el);
+    else el.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  };
   window.addEventListener('load', () => requestAnimationFrame(scrollToMenu));
 }
 
@@ -208,16 +216,23 @@ document.querySelectorAll('a.lbx').forEach(a => {
 });
 
 // ---------- Auto-play reel/team videos when scrolled into view ----------
-const reelVideos = document.querySelectorAll('.reel-grid video, .team .c-slide video');
+// Only ever decode one video at a time — on the reel grid two clips can both
+// cross the visibility threshold mid-scroll (stacked on mobile), and decoding
+// them concurrently is a real stutter source on phone-class hardware.
+const reelVideos = document.querySelectorAll('.hero-video, .reel-grid video, .team .c-slide video');
 if ('IntersectionObserver' in window && reelVideos.length){
+  const ratios = new Map(Array.from(reelVideos, v => [v, 0]));
   const vobs = new IntersectionObserver(entries => {
-    entries.forEach(en => {
-      const v = en.target;
-      if (en.isIntersecting && en.intersectionRatio >= 0.4){
-        v.play().catch(()=>{});
-      } else {
-        v.pause();
-      }
+    entries.forEach(en => ratios.set(en.target, en.isIntersecting ? en.intersectionRatio : 0));
+
+    let winner = null;
+    ratios.forEach((ratio, v) => {
+      if (ratio >= 0.4 && (!winner || ratio > ratios.get(winner))) winner = v;
+    });
+
+    reelVideos.forEach(v => {
+      if (v === winner) v.play().catch(()=>{});
+      else v.pause();
     });
   }, { threshold:[0, .4, 1] });
   reelVideos.forEach(v => vobs.observe(v));
