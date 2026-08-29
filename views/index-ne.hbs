@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{{site.title}}}</title>
+<meta name="description" content="{{{site.description}}}">
+
+<!-- ===== SEO: canonical + robots (applies to all compliant crawlers — Googlebot, Bingbot, DuckDuckBot, Yandex, Baiduspider, Applebot, etc.) ===== -->
+<link rel="canonical" href="{{{site.canonical}}}">
+<link rel="alternate" hreflang="ne" href="{{{site.canonical}}}">
+<link rel="alternate" hreflang="en" href="{{{site.alternateEn}}}">
+<link rel="alternate" hreflang="x-default" href="{{{site.alternateEn}}}">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="{{{site.themeColor}}}">
+<meta name="author" content="The Door's Family Hotel">
+<meta name="keywords" content="{{{site.keywords}}}">
+<meta name="geo.region" content="{{{site.geo.region}}}">
+<meta name="geo.placename" content="{{{site.geo.placename}}}">
+<meta name="geo.position" content="{{{site.geo.position}}}">
+<meta name="ICBM" content="{{{site.geo.icbm}}}">
+<meta name="applicable-device" content="pc,mobile">
+<meta name="msapplication-TileColor" content="#8e2318">
+<meta name="msapplication-TileImage" content="https://thedoorsfamily.com.np/assets/logo/android-chrome-192x192.png">
+
+<!-- ===== SEO: Open Graph (Facebook, WhatsApp, LinkedIn previews) ===== -->
+<meta property="og:type" content="restaurant.restaurant">
+<meta property="og:site_name" content="The Door's Family Hotel">
+<meta property="og:title" content="{{{site.og.title}}}">
+<meta property="og:description" content="{{{site.og.description}}}">
+<meta property="og:image" content="{{{site.og.image}}}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="{{{site.canonical}}}">
+<meta property="og:locale" content="ne_NP">
+
+<!-- ===== SEO: Twitter/X Card ===== -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{{site.twitter.title}}}">
+<meta name="twitter:description" content="{{{site.twitter.description}}}">
+<meta name="twitter:image" content="{{{site.twitter.image}}}">
+
+<link rel="stylesheet" href="css/style.css?v={{{site.assetVersion}}}">
+<link rel="icon" type="image/png" href="assets/logo/logo.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/logo/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/logo/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="assets/logo/favicon-48x48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="assets/logo/favicon-96x96.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/logo/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<!-- ===== SEO: Structured Data (LocalBusiness/Restaurant) ===== -->
+<script type="application/ld+json">
+{{{jsonLd}}}
+</script>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="#home">
+      <img src="assets/logo/badge_white.png" alt="द डोर्स फ्यामिली होटल लोगो">
+      <span>द डोर्स फ्यामिली होटल</span>
+    </a>
+    <button class="nav-toggle" aria-label="मेनु">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="#about">बारे</a></li>
+      <li><a href="#highlights">अनुभव</a></li>
+      <li><a href="#menu">मेनु</a></li>
+      <li><a href="#live">लाइभ सङ्गीत</a></li>
+      <li><a href="#events">इभेन्ट</a></li>
+      <li><a href="#gallery">ग्यालरी</a></li>
+      <li><a href="#guests">पाहुना</a></li>
+      <li><a href="#team">टिम</a></li>
+      <li><a href="#visit">हामीलाई भेट्नुहोस्</a></li>
+      <li><a href="#location">नक्सा</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ================= STICKY SOCIAL RAIL ================= -->
+<div class="social-sticky">
+  <a class="social-btn" href="{{{site.contact.whatsapp}}}" target="_blank" rel="noopener noreferrer" aria-label="द डोर्स फ्यामिली होटल लाई WhatsApp मा म्यासेज गर्नुहोस्" title="WhatsApp">
+    <img src="assets/icons/whatsapp.svg" alt="" width="20" height="20">
+  </a>
+  <a class="social-btn" href="{{{site.social.facebook}}}" target="_blank" rel="noopener noreferrer" aria-label="द डोर्स फ्यामिली होटल लाई Facebook मा फलो गर्नुहोस्" title="Facebook">
+    <img src="assets/icons/facebook.svg" alt="" width="20" height="20">
+  </a>
+  <a class="social-btn" href="{{{site.social.instagram}}}" target="_blank" rel="noopener noreferrer" aria-label="द डोर्स फ्यामिली होटल लाई Instagram मा फलो गर्नुहोस्" title="Instagram">
+    <img src="assets/icons/instagram.svg" alt="" width="20" height="20">
+  </a>
+  <a class="social-btn" href="{{{site.social.tiktok}}}" target="_blank" rel="noopener noreferrer" aria-label="द डोर्स फ्यामिली होटल लाई TikTok मा फलो गर्नुहोस्" title="TikTok">
+    <img src="assets/icons/tiktok.svg" alt="" width="20" height="20">
+  </a>
+</div>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="home">
+  <div class="hero-bg"></div>
+  <video class="hero-video" autoplay muted loop playsinline poster="assets/img/garden_evening.jpg">
+    <source src="assets/video/hero_garden.mp4" type="video/mp4">
+  </video>
+  <div class="hero-vignette"></div>
+  <div class="hero-content">
+    <h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">द डोर्स फ्यामिली होटल — हेटौंडाको रक 'न' रोल ग्राडेन रेस्टुरेन्ट, कटेज र लाइभ सङ्गीत भेन्यु</h1>
+    <img class="hero-badge" src="assets/logo/badge_white.png" alt="द डोर्स फ्यामिली होटल — स्थापना २०१८, हेटौंडा">
+    <p class="hero-quote">{{{site.heroQuote}}}</p>
+    <p class="hero-tags">खुला हावामा बस्ने ठाउँ <span class="st">&#9733;</span> आरामदायी कटेजहरू <span class="st">&#9733;</span> लाइभ सङ्गीत</p>
+    <div class="hero-cta">
+      <a class="btn solid" href="#menu">मेनु हेर्नुहोस्</a>
+      <a class="btn" href="{{{site.contact.rateUs}}}" target="_blank" rel="noopener">रेटिङ दिनुहोस्</a>
+      <a class="btn" href="tel:{{{site.contact.phone}}}">फोन गर्नुहोस्</a>
+    </div>
+  </div>
+  <a class="hero-scroll" href="#about">&#8595;</a>
+</header>
+
+<!-- ================= ABOUT ================= -->
+<section class="about" id="about">
+  <img class="about-lizard" src="assets/logo/lizard_nobg.png" alt="">
+  <div class="section-inner">
+    <p class="eyebrow">स्थापना २०१८ &middot; हेटौंडा</p>
+    <h2 class="section-title">एक रक 'न' रोल ग्राडेन</h2>
+    <div class="title-rule"></div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p><span class="fell">रङ्गा मार्गमा लुकेको,</span> द डोर्स फ्यामिली होटल हेटौंडाको राम्रो खाना, चिसो
+        पेय, र चर्को गितारको घर हो। लालटिनले उज्यालो गरिएका बगैंचाका बाटाहरू आरामदायी कटेजहरू हुँदै
+        पहाडी सूर्यास्तको दृश्य भएको खुला हावामा डाइनिङ टेरेससम्म पुग्छन्।</p>
+        <p>रकका दिग्गजहरूलाई सम्मान गर्दै नामाकरण गरिएको, हाम्रा भित्ताहरूमा The Doors, Led Zeppelin,
+        Pink Floyd, र थुप्रैको भावना झल्किन्छ — हाम्रो रक 'न' रोल जोन र तपाईंको फोटोको प्रतीक्षामा
+        रहेको रातो टेलिफोन बुथसम्मै।</p>
+        <p><span class="fell">हरेक साताअन्त, स्टेज लाइभ सङ्गीतले उज्यालो हुन्छ। म्याच भएका दिन,
+        ठूलो स्क्रिनले वातावरण भरिदिन्छ।</span> खानाको लागि आउनुहोस्, माहोलको लागि रोकिनुहोस्।</p>
+      </div>
+      <img class="about-photo" src="assets/img/cottages_entrance.jpg" alt="द डोर्स फ्यामिली होटलको कटेजहरू सहितको गार्डेन प्रवेशद्वार">
+    </div>
+  </div>
+</section>
+
+<!-- ================= HIGHLIGHTS ================= -->
+<section class="highlights dark" id="highlights">
+  <img class="deco-lizard hi-lizard" src="assets/logo/lizard_cream.png" alt="">
+  <div class="section-inner">
+    <p class="eyebrow">अनुभव</p>
+    <h2 class="section-title" style="color:var(--paper);">तपाईंलाई के पर्खिरहेको छ</h2>
+    <div class="title-rule"></div>
+    <div class="cards">
+      <div class="card">
+        <div class="slider" data-n="3"><img src="assets/img/garden_path.jpg" alt="आरामदायी कटेज र बगैंचाका बाटाहरू" loading="lazy" class="on"><img src="assets/img/cottages_entrance.jpg" alt="आरामदायी कटेज र बगैंचाका बाटाहरू" loading="lazy" class=""><img src="assets/img/garden_evening.jpg" alt="आरामदायी कटेज र बगैंचाका बाटाहरू" loading="lazy" class=""><div class="dots"><span class="on"></span><span class=""></span><span class=""></span></div></div>
+        <div class="card-body">
+          <h3>आरामदायी कटेजहरू</h3>
+          <p>लालटिनले उज्यालो गरिएका बगैंचाका बाटामा निजी कटेजहरू — परिवार र साथीहरूसँग डिनरको लागि तपाईंको आफ्नै शान्त कुना।</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="slider" data-n="3"><img src="assets/img/stage_night.jpg" alt="बगैंचाको स्टेजमा लाइभ सङ्गीत" loading="lazy" class="on"><img src="assets/img/live_band.jpg" alt="बगैंचाको स्टेजमा लाइभ सङ्गीत" loading="lazy" class=""><img src="assets/img/hero_stage.jpg" alt="बगैंचाको स्टेजमा लाइभ सङ्गीत" loading="lazy" class=""><div class="dots"><span class="on"></span><span class=""></span><span class=""></span></div></div>
+        <div class="card-body">
+          <h3>लाइभ सङ्गीत</h3>
+          <p>स्थानीय कलाकार र ब्यान्डहरूले हरेक साताअन्त Lizard King को साक्षीमा हाम्रो खुला हावामा स्टेज सम्हाल्छन्।</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="slider" data-n="2"><img src="assets/img/projector_screen.jpg" alt="म्याच डेको लागि ठूलो स्क्रिन प्रोजेक्टर" loading="lazy" class="on"><img src="assets/img/stage_day.jpg" alt="म्याच डेको लागि ठूलो स्क्रिन प्रोजेक्टर" loading="lazy" class=""><div class="dots"><span class="on"></span><span class=""></span></div></div>
+        <div class="card-body">
+          <h3>ठूलो स्क्रिनमा म्याच डे</h3>
+          <p>फुटबल, क्रिकेट, र हरेक ठूलो खेल — तपाईंको वरिपरि भीड कराउँदै ठूलो स्क्रिनमा प्रदर्शन हुन्छ।</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="slider" data-n="3"><img src="assets/img/openair_sunset.jpg" alt="खुला हावामा डाइनिङ टेरेस" loading="lazy" class="on"><img src="assets/img/guests.jpg" alt="खुला हावामा डाइनिङ टेरेस" loading="lazy" class=""><img src="assets/img/rainy_deck.jpg" alt="खुला हावामा डाइनिङ टेरेस" loading="lazy" class=""><div class="dots"><span class="on"></span><span class=""></span><span class=""></span></div></div>
+        <div class="card-body">
+          <h3>खुला हावामा डाइनिङ</h3>
+          <p>ओत लागेको टेरेसमुनि काठका टेबलहरू, हावा र हेटौंडाका उत्कृष्ट सूर्यास्तका लागि खुला।</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="slider" data-n="4"><img src="assets/img/rocknroll_zone.jpg" alt="रक एन्ड रोल जोन र बार" loading="lazy" class="on"><img src="assets/img/bar_kiosk.jpg" alt="रक एन्ड रोल जोन र बार" loading="lazy" class=""><img src="assets/img/moon_wall.jpg" alt="रक एन्ड रोल जोन र बार" loading="lazy" class=""><img src="assets/img/rocknroll_zone2.jpg" alt="रक एन्ड रोल जोन र बार" loading="lazy" class=""><div class="dots"><span class="on"></span><span class=""></span><span class=""></span><span class=""></span></div></div>
+        <div class="card-body">
+          <h3>रक 'न' रोल जोन</h3>
+          <p>दिग्गजहरूको भित्ता — ब्यान्ड आर्ट, क्लासिक टिसर्ट, र सङ्गीतको उत्कृष्ट युगलाई मनाउने The Doors बार।</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="slider" data-n="2"><img src="assets/img/parking.jpg" alt="ठूलो पार्किङ क्षेत्र" loading="lazy" class="on"><img src="assets/img/aerial_night.jpg" alt="ठूलो पार्किङ क्षेत्र" loading="lazy" class=""><div class="dots"><span class="on"></span><span class=""></span></div></div>
+        <div class="card-body">
+          <h3>ठूलो पार्किङ</h3>
+          <p>बाइक र कारको लागि फराकिलो, झन्झटरहित पार्किङ — आउनुहोस्, सजिलै पार्क गर्नुहोस्, र सिधै आफ्नो टेबलमा जानुहोस्।</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MENU ================= -->
+<section class="menu" id="menu">
+  <img class="deco-lizard menu-lizard" src="assets/logo/lizard_nobg.png" alt="">
+  <div class="section-inner">
+    <p class="eyebrow">भान्साबाट ताजा &middot; बारबाट सिधा</p>
+    <h2 class="section-title">हाम्रो मेनु</h2>
+    <div class="title-rule"></div>
+
+    <div class="menu-tabs">
+      {{#each menuPanels}}
+      <button class="tab-btn{{#if this.active}} active{{/if}}" data-panel="panel-{{this.key}}">{{{this.label}}}</button>
+      {{/each}}
+    </div>
+
+    {{#each menuPanels}}
+    <div class="menu-panel{{#if this.active}} active{{/if}}" id="panel-{{this.key}}">
+      <div class="menu-cols">
+        {{#each this.blocks}}
+          {{#if this.items}}
+          <div class="menu-sec">
+            <h4>{{this.title}}</h4>
+            {{#each this.items}}
+            <div class="mi"><span class="n">{{{this.name}}}</span><span class="dots"></span><span class="p">{{this.price}}</span></div>
+            {{/each}}
+          </div>
+          {{else}}
+          <div class="menu-sec" style="grid-column:1/-1;">
+            <h4>{{this.title}}</h4>
+            <div class="momo-wrap">
+            <table class="momo-table">
+              <tr>{{#each this.columns}}<th>{{this}}</th>{{/each}}</tr>
+              {{#each this.rows}}
+              <tr><td>{{{this.label}}}</td>{{#each this.values}}<td>{{this}}</td>{{/each}}</tr>
+              {{/each}}
+            </table>
+            </div>
+          </div>
+          {{/if}}
+        {{/each}}
+      </div>
+    </div>
+    {{/each}}
+
+    <p class="menu-note">सबै मूल्य रुपैयाँ (NPR) मा हो। कृपया जिम्मेवारीपूर्वक रक्सी सेवन गर्नुहोस्।</p>
+    <div class="menu-downloads">
+      <a class="btn dark-btn" href="assets/menu/food_menu.pdf" download>खाना मेनु डाउनलोड गर्नुहोस्</a>
+      <a class="btn dark-btn" href="assets/menu/bar_menu.pdf" download>बार मेनु डाउनलोड गर्नुहोस्</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LIVE STRIP ================= -->
+<section class="live" id="live">
+  <div class="section-inner">
+    <img class="live-badge" src="assets/logo/badge_white.png" alt="">
+    <h2>हरेक साताअन्त लाइभ सङ्गीत</h2>
+    <p>हाम्रो गार्डेन स्टेजमा एकोस्टिक रातहरू, पूर्ण ब्यान्ड सेटहरू, र विशेष इभेन्ट साँझहरू।
+    रङ्गा मार्ग हुँदै सङ्गीत पछ्याउनुहोस् &mdash; तपाईंले देख्नुभन्दा पहिले सुन्नुहुनेछ।</p>
+    <div class="hero-cta" style="margin-top:2rem;">
+      <a class="btn" href="tel:{{{site.contact.phone}}}">टेबल बुक गर्नुहोस्</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= EVENTS ================= -->
+<section class="events" id="events">
+  <img class="deco-lizard ev-lizard" src="assets/logo/lizard_nobg.png" alt="">
+  <div class="section-inner">
+    <p class="eyebrow">उत्सवहरू</p>
+    <h2 class="section-title">इभेन्ट &amp; पार्टीहरू</h2>
+    <div class="title-rule"></div>
+    <div class="events-grid">
+      <div class="slider slider-lg" data-n="3">
+        <img src="assets/img/event_celebration.jpg" alt="स्टेजमा कन्फेटी सहितको नयाँ वर्ष उत्सव" class="on">
+        <img src="assets/img/event_hosts.jpg" alt="उत्सव स्टेजमा होस्टहरू">
+        <img src="assets/img/newyear.jpg" alt="स्टेजमा नयाँ वर्षको शुभकामना">
+        <div class="dots"><span class="on"></span><span></span><span></span></div>
+      </div>
+      <div class="events-text">
+        <p><span class="fell">जब हेटौंडाले उत्सव मनाउँछ, यहीं मनाउँछ।</span>
+        स्टेजमाथि कन्फेटी झर्ने हाम्रो चर्चित नयाँ वर्ष उत्सवदेखि जन्मदिन, वर्षगाँठ, र गार्डेनमा
+        निजी पार्टीसम्म &mdash; हामी सबै आयोजना गर्छौं, र ठूलो गरी गर्छौं।</p>
+        <p>स्टेज, कटेजहरू, वा सम्पूर्ण गार्डेन बुक गर्नुहोस्। लाइभ सङ्गीत, ठूलो स्क्रिन,
+        पूर्ण भान्सा र बार &mdash; तपाईंको उत्सव, हाम्रो स्टेज।</p>
+        <div class="hero-cta" style="justify-content:flex-start; margin-top:1.6rem;">
+          <a class="btn dark-btn" href="tel:{{{site.contact.phone}}}">आफ्नो इभेन्ट योजना बनाउनुहोस्</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GALLERY ================= -->
+<section class="gallery" id="gallery">
+  <img class="deco-lizard gal-lizard" src="assets/logo/lizard_nobg.png" alt="">
+  <div class="section-inner">
+    <p class="eyebrow">क्षणहरू</p>
+    <h2 class="section-title">गार्डेन वरिपरि</h2>
+    <div class="title-rule"></div>
+    <div class="carousel v3" id="car-gallery">
+      <div class="c-track">
+        <figure class="c-slide">
+          <a class="lbx" href="assets/img/live_band.jpg"><img src="assets/img/live_band.jpg" alt="स्टेजमा लाइभ प्रस्तुति दिँदै ब्यान्ड" loading="lazy"></a>
+          <figcaption>गार्डेन स्टेजमा लाइभ</figcaption>
+        </figure>
+        <figure class="c-slide">
+          <a class="lbx" href="assets/img/telephone_booth.jpg"><img src="assets/img/telephone_booth.jpg" alt="प्रतिष्ठित रातो टेलिफोन बुथ" loading="lazy"></a>
+          <figcaption>प्रसिद्ध रातो बुथ</figcaption>
+        </figure>
+        <figure class="c-slide">
+          <a class="lbx" href="assets/img/telephone_booth2.jpg"><img src="assets/img/telephone_booth2.jpg" alt="प्रतिष्ठित रातो टेलिफोन बुथ" loading="lazy"></a>
+          <figcaption>बुथ छेउमा फोटो खिचाउनुहोस्</figcaption>
+        </figure>
+        <figure class="c-slide">
+          <a class="lbx" href="assets/img/garden_evening.jpg"><img src="assets/img/garden_evening.jpg" alt="साँझको गार्डेन बाटो" loading="lazy"></a>
+          <figcaption>गार्डेन बाटोमा ब्लु आवर</figcaption>
+        </figure>
+        <figure class="c-slide">
+          <a class="lbx" href="assets/img/neon_sign.jpg"><img src="assets/img/neon_sign.jpg" alt="वर्षामा चम्किरहेको नियन साइन" loading="lazy"></a>
+          <figcaption>नियन रातहरू, मनसुनको जादू</figcaption>
+        </figure>
+        <figure class="c-slide">
+          <a class="lbx" href="assets/img/moon_wall.jpg"><img src="assets/img/moon_wall.jpg" alt="चन्द्रमा र हिमालको आर्ट भित्ता" loading="lazy"></a>
+          <figcaption>चन्द्रमा &amp; हिमालको भित्ता</figcaption>
+        </figure>
+        <figure class="c-slide">
+          <a class="lbx" href="assets/img/event_celebration.jpg"><img src="assets/img/event_celebration.jpg" alt="नयाँ वर्ष उत्सव" loading="lazy"></a>
+          <figcaption>मध्यरातमा कन्फेटी</figcaption>
+        </figure>
+        <figure class="c-slide">
+          <a class="lbx" href="assets/img/event_orange.jpg"><img src="assets/img/event_orange.jpg" alt="पाहुनासँग विशेष साँझ" loading="lazy"></a>
+          <figcaption>विशेष साँझ, विशेष पाहुना</figcaption>
+        </figure>
+        <figure class="c-slide">
+          <a class="lbx" href="assets/img/owners_night.jpg"><img src="assets/img/owners_night.jpg" alt="गार्डेन बत्तीमुनि साँझ" loading="lazy"></a>
+          <figcaption>गार्डेन बत्तीमुनि</figcaption>
+        </figure>
+        <figure class="c-slide">
+          <a class="lbx" href="assets/img/cottages_entrance.jpg"><img src="assets/img/cottages_entrance.jpg" alt="गार्डेन प्रवेशद्वारको आर्च" loading="lazy"></a>
+          <figcaption>आर्चबाट स्वागत</figcaption>
+        </figure>
+      </div>
+      <div class="c-dots"></div>
+    </div>
+  </div>
+</section>
+
+<div class="lightbox"><button class="lightbox-close" aria-label="बन्द गर्नुहोस्">&times;</button><img src="" alt=""></div>
+
+
+
+<!-- ================= HAPPY GUESTS ================= -->
+<section class="happy" id="guests">
+  <div class="section-inner">
+    <p class="eyebrow">तपाईं, The Door's मा</p>
+    <h2 class="section-title">खुसी पाहुनाहरू</h2>
+    <div class="title-rule"></div>
+    <div class="carousel v3" id="car-guests">
+      <div class="c-track">
+        <figure class="c-slide">
+          <a class="lbx" href="assets/img/guests_table.jpg"><img src="assets/img/guests_table.jpg" alt="गार्डेनमा खाना र पेय रमाइरहेका साथीहरू" loading="lazy"></a>
+          <figcaption>साथीहरूसँग लामो लन्च</figcaption>
+        </figure>
+        <figure class="c-slide">
+          <a class="lbx" href="assets/img/ny_friends.jpg"><img src="assets/img/ny_friends.jpg" alt="नयाँ वर्षको रातमा उत्सव मनाइरहेका साथीहरू" loading="lazy"></a>
+          <figcaption>नयाँ वर्ष, नयाँ सम्झना</figcaption>
+        </figure>
+        <figure class="c-slide">
+          <a class="lbx" href="assets/img/wings_mural.jpg"><img src="assets/img/wings_mural.jpg" alt="एन्जल विङ्स म्युरलमा फोटो खिचाइरहेका पाहुना" loading="lazy"></a>
+          <figcaption>The Doors म्युरलमा आफ्ना पखेटा फिँजाउनुहोस्</figcaption>
+        </figure>
+        <figure class="c-slide">
+          <a class="lbx" href="assets/img/family_visit.jpg"><img src="assets/img/family_visit.jpg" alt="गार्डेनमा पारिवारिक साँझ" loading="lazy"></a>
+          <figcaption>तीन पुस्ता, एउटै टेबल</figcaption>
+        </figure>
+        <figure class="c-slide">
+          <a class="lbx" href="assets/img/ny_trio.jpg"><img src="assets/img/ny_trio.jpg" alt="उत्सवको लागि सजिएका साथीहरू" loading="lazy"></a>
+          <figcaption>ठूलो रातको लागि तयार</figcaption>
+        </figure>
+        <figure class="c-slide">
+          <a class="lbx" href="assets/img/guests.jpg"><img src="assets/img/guests.jpg" alt="आफ्नो टेबलमा मुस्कुराइरहेका पाहुना" loading="lazy"></a>
+          <figcaption>न्यानो कुना, न्यानो मुस्कान</figcaption>
+        </figure>
+      </div>
+      <div class="c-dots"></div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- ================= TEAM ================= -->
+<section class="team" id="team">
+  <div class="section-inner">
+    <p class="eyebrow">The Door's पछाडिको परिवार</p>
+    <h2 class="section-title">हाम्रो टिमसँग भेट्नुहोस्</h2>
+    <div class="title-rule"></div>
+    <div class="carousel v2" id="car-team">
+      <div class="c-track">
+        <figure class="c-slide">
+          <a class="lbx" href="assets/img/team.jpg"><img src="assets/img/team.jpg" alt="मुस्कुराइरहेको सेवा टिम" loading="lazy"></a>
+          <figcaption>सधैं मुस्कान, सधैं सेवा</figcaption>
+        </figure>
+        <figure class="c-slide">
+          <a class="lbx" href="assets/img/team_service.jpg"><img src="assets/img/team_service.jpg" alt="हाम्रो सेवा टिम" loading="lazy"></a>
+          <figcaption>गार्डेनलाई उज्यालो राख्ने टिम</figcaption>
+        </figure>
+        <figure class="c-slide">
+          <a class="lbx" href="assets/img/team_bar.jpg"><img src="assets/img/team_bar.jpg" alt="बार र भान्सा टिम" loading="lazy"></a>
+          <figcaption>बार पछाडि, स्वाद पछाडि</figcaption>
+        </figure>
+        <figure class="c-slide">
+          <video muted loop playsinline preload="metadata" poster="assets/img/team_intro_poster.jpg">
+            <source src="assets/video/team_intro.mp4" type="video/mp4">
+          </video>
+          <figcaption>टिमलाई नमस्ते भन्नुहोस्</figcaption>
+        </figure>
+      </div>
+      <div class="c-dots"></div>
+    </div>
+
+    <p class="team-caption">प्लेट भरिपूर्ण, पेय चिसो, र राम्रो समय चलिरहने बनाउने मुस्कुराइरहेको टिम
+    &mdash; हरेक दिन।</p>
+  </div>
+</section>
+
+<!-- ================= VIDEO REEL ================= -->
+<section class="reel dark" id="reel">
+  <div class="section-inner">
+    <p class="eyebrow" style="color:var(--gold);">गतिमा</p>
+    <h2 class="section-title" style="color:var(--paper);">माहोल महसुस गर्नुहोस्</h2>
+    <div class="title-rule"></div>
+    <div class="reel-grid">
+      <figure>
+        <video muted loop playsinline preload="metadata" poster="assets/img/live_band.jpg">
+          <source src="assets/video/clip_live.mp4" type="video/mp4">
+        </video>
+        <figcaption>गार्डेन स्टेजमा लाइभ</figcaption>
+      </figure>
+      <figure>
+        <video muted loop playsinline preload="metadata" poster="assets/img/aerial_night.jpg">
+          <source src="assets/video/clip_aerial.mp4" type="video/mp4">
+        </video>
+        <figcaption>अँध्यारो भएपछि माथिबाट गार्डेन</figcaption>
+      </figure>
+      <figure>
+        <video muted loop playsinline preload="metadata" poster="assets/img/neon_sign.jpg">
+          <source src="assets/video/clip_neon.mp4" type="video/mp4">
+        </video>
+        <figcaption>नियन रातहरू, मनसुनको जादू</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VISIT ================= -->
+<section class="visit dark" id="visit">
+  <img class="deco-lizard visit-lizard" src="assets/logo/lizard_cream.png" alt="">
+  <div class="section-inner">
+    <p class="eyebrow" style="color:var(--gold);">हामीलाई फेला पार्नुहोस्</p>
+    <h2 class="section-title" style="color:var(--paper);">हामीलाई भेट्नुहोस्</h2>
+    <div class="title-rule"></div>
+    <div class="visit-grid">
+      <div class="visit-item">
+        <h3>ठेगाना</h3>
+        <p>{{{site.contact.address}}}<br>{{{site.contact.addressLine2}}}</p>
+        <p><a href="{{{site.contact.mapListing}}}" target="_blank" rel="noopener">Google Maps मा खोल्नुहोस् &rarr;</a></p>
+      </div>
+      <div class="visit-item">
+        <h3>फोन गर्नुहोस्</h3>
+        <p><a href="tel:{{{site.contact.phone}}}">{{{site.contact.phoneDisplay}}}</a></p>
+        <p>आरक्षण &amp; इभेन्ट बुकिङ</p>
+      </div>
+      <div class="visit-item">
+        <h3>समय</h3>
+        <p>हरेक दिन खुला<br>साताअन्तमा लाइभ सङ्गीत</p>
+      </div>
+    </div>
+    <div class="visit-cta">
+      <a class="btn" href="tel:{{{site.contact.phone}}}">आफ्नो टेबल आरक्षण गर्नुहोस्</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= LOCATION MAP ================= -->
+<section class="location" id="location">
+  <div class="map-full">
+    <iframe
+      src="{{{site.contact.embedMap}}}"
+      loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
+      title="नक्सा — द डोर्स फ्यामिली होटल, हेटौंडा"></iframe>
+    <div class="gmap-card">
+      <div class="gmap-head">
+        <div>
+          <h3>द डोर्स फ्यामिली होटल</h3>
+          <p class="gmap-addr">Ward 5, Ranga Marg, Hetauda 44100</p>
+          <p class="gmap-rating">5.0 <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span></p>
+        </div>
+        <div class="gmap-actions">
+          <a href="{{{site.contact.mapListing}}}" target="_blank" rel="noopener" title="Google Maps मा हेर्नुहोस्" aria-label="Google Maps मा हेर्नुहोस्">&#8599;</a>
+          <a href="{{{site.contact.directions}}}" target="_blank" rel="noopener" title="दिशा निर्देशन पाउनुहोस्" aria-label="दिशा निर्देशन पाउनुहोस्">&#10148;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="f-badge-row">
+    <img class="f-liz flip" src="assets/logo/lizard_cream.png" alt="">
+    <img class="f-badge" src="assets/logo/badge_white.png" alt="द डोर्स फ्यामिली होटल ब्याज">
+    <img class="f-liz" src="assets/logo/lizard_cream.png" alt="">
+  </div>
+  <div class="f-name">द डोर्स फ्यामिली होटल &middot; हेटौंडा</div>
+  <div class="f-line">{{{site.heroQuote}}}</div>
+
+  <div class="f-copy">{{{site.footerCopy}}}</div>
+  <div class="f-credit"><a href="https://sharma-ramesh.com.np" target="_blank" rel="noopener noreferrer">Ramesh Sharma</a> द्वारा निर्माण &amp; व्यवस्थापन</div>
+</footer>
+
+<script src="js/vendor/lenis.min.js?v={{{site.assetVersion}}}"></script>
+<script src="js/main.js?v={{{site.assetVersion}}}"></script>
+</body>
+</html>

@@ -9,6 +9,24 @@
 @font-face { font-family:'Cormorant'; src:url('../assets/fonts/cormorant-garamond-latin-500-normal.woff2') format('woff2'); font-weight:500; font-display:swap; }
 @font-face { font-family:'Cormorant'; src:url('../assets/fonts/cormorant-garamond-latin-600-normal.woff2') format('woff2'); font-weight:600; font-display:swap; }
 
+/* Devanagari (Nepali /ne page) — same family names as above, restricted via
+   unicode-range, so mixed Latin+Devanagari text (e.g. brand names inline with
+   Nepali copy) automatically picks the correct face per character. One
+   variable font file covers every weight; IMFell's slot is registered as
+   italic even though the glyphs are upright, since Devanagari has no italic
+   tradition and a browser-synthesized oblique shears conjuncts apart. */
+@font-face { font-family:'Cinzel'; src:url('../assets/fonts/noto-serif-devanagari-devanagari-variable.woff2') format('woff2'); font-weight:600; unicode-range:U+0900-097F,U+200C-200D; font-display:swap; }
+@font-face { font-family:'Cinzel'; src:url('../assets/fonts/noto-serif-devanagari-devanagari-variable.woff2') format('woff2'); font-weight:700; unicode-range:U+0900-097F,U+200C-200D; font-display:swap; }
+@font-face { font-family:'IMFell'; src:url('../assets/fonts/noto-serif-devanagari-devanagari-variable.woff2') format('woff2'); font-weight:400; font-style:italic; unicode-range:U+0900-097F,U+200C-200D; font-display:swap; }
+@font-face { font-family:'Cormorant'; src:url('../assets/fonts/noto-serif-devanagari-devanagari-variable.woff2') format('woff2'); font-weight:500; unicode-range:U+0900-097F,U+200C-200D; font-display:swap; }
+@font-face { font-family:'Cormorant'; src:url('../assets/fonts/noto-serif-devanagari-devanagari-variable.woff2') format('woff2'); font-weight:600; unicode-range:U+0900-097F,U+200C-200D; font-display:swap; }
+
+/* The site's wide letter-spacing is a Latin small-caps display trick — on
+   Devanagari it inserts visible gaps inside conjunct clusters (the same
+   "broken apart" look as a missing-glyph font), so it's switched off wholesale
+   for the Nepali page rather than chased selector-by-selector. */
+html[lang="ne"] *{ letter-spacing:normal !important; }
+
 :root{
   --ink:#16120d;
   --ink-soft:#241d15;
@@ -265,7 +283,7 @@ section{ position:relative; }
 
 /* ---------- Live / events strip ---------- */
 .live{
-  background:var(--ink) url('../assets/img/live_band.jpg') center/cover no-repeat;
+  background:var(--ink) url('../assets/img/live_band.jpg') center/cover fixed no-repeat;
   position:relative;
 }
 .live::before{ content:""; position:absolute; inset:0; background:rgba(22,18,13,.78); }
@@ -384,6 +402,7 @@ footer .f-credit a{ color:inherit; }
   .nav-toggle{ display:block; }
   .cards{ grid-template-columns:1fr; }
   .momo-wrap{ overflow-x:auto; }
+  .live{ background-attachment:scroll; }
 }
 
 /* ---------- Hero video ---------- */

@@ -10,7 +10,7 @@ import * as http from 'http';
 const OUT_DIR = join(__dirname, '..', 'docs');
 
 // Every server-rendered route to export. Add here if more pages are added later.
-const ROUTES = ['/'];
+const ROUTES = ['/', '/ne'];
 
 async function fetchBody(url: string): Promise<string> {
   return new Promise((resolve, reject) => {
