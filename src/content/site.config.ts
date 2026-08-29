@@ -123,5 +123,5 @@ export const SITE = {
   heroQuote: '&ldquo;Show me the way to the next whiskey bar&rdquo;',
   footerCopy:
     "&copy; 2026 The Door's Family Hotel &middot; Est. 2018 &middot; Hetauda - 5, Ranga Marg &middot; 9864671482",
-  assetVersion: '20260830b',
+  assetVersion: '20260830d',
 };
