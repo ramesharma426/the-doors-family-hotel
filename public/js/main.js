@@ -1,5 +1,24 @@
 // The Door's Family Hotel — site interactions
 
+// ---------- Full-page loader: hide the page until everything is loaded ----------
+(() => {
+  const loader = document.getElementById('loader');
+  if (!loader) return;
+  const pct = loader.querySelector('.loader-pct');
+  const imgs = Array.from(document.images);
+  const total = imgs.length || 1;
+  let loaded = 0;
+  const bump = () => {
+    loaded++;
+    pct.textContent = Math.min(100, Math.round((loaded / total) * 100)) + '%';
+  };
+  imgs.forEach(img => {
+    if (img.complete) bump();
+    else { img.addEventListener('load', bump); img.addEventListener('error', bump); }
+  });
+  window.addEventListener('load', () => loader.remove());
+})();
+
 // Inertia-smooths wheel/touch scroll and eases in-page anchor navigation
 // (falls back to plain native scrolling if the vendor script fails to load).
 const lenis = typeof Lenis !== 'undefined' ? new Lenis({ anchors: true, autoRaf: true }) : null;
