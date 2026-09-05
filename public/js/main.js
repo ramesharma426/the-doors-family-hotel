@@ -235,25 +235,11 @@ document.querySelectorAll('a.lbx').forEach(a => {
 });
 
 // ---------- Auto-play reel/team videos when scrolled into view ----------
-// Only ever decode one video at a time — on the reel grid two clips can both
-// cross the visibility threshold mid-scroll (stacked on mobile), and decoding
-// them concurrently is a real stutter source on phone-class hardware.
 const reelVideos = document.querySelectorAll('.hero-video, .reel-grid video, .team .c-slide video');
 if ('IntersectionObserver' in window && reelVideos.length){
-  const ratios = new Map(Array.from(reelVideos, v => [v, 0]));
   const vobs = new IntersectionObserver(entries => {
-    entries.forEach(en => ratios.set(en.target, en.isIntersecting ? en.intersectionRatio : 0));
-
-    let winner = null;
-    ratios.forEach((ratio, v) => {
-      if (ratio >= 0.4 && (!winner || ratio > ratios.get(winner))) winner = v;
-    });
-
-    reelVideos.forEach(v => {
-      if (v === winner) v.play().catch(()=>{});
-      else v.pause();
-    });
-  }, { threshold:[0, .4, 1] });
+    entries.forEach(en => (en.isIntersecting ? en.target.play().catch(()=>{}) : en.target.pause()));
+  }, { threshold: 0.4 });
   reelVideos.forEach(v => vobs.observe(v));
 } else {
   reelVideos.forEach(v => v.play().catch(()=>{}));
