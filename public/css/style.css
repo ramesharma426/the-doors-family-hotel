@@ -444,14 +444,14 @@ footer .f-credit a{ color:inherit; }
   .cards{ grid-template-columns:1fr; }
   .momo-wrap{ overflow-x:auto; }
   .live, .beerzone{ background-attachment:scroll; }
-  /* Below 720px the .live parallax-img layer fully covers .live, so its own
-     CSS background is never actually visible — just the pre-JS paint under it.
-     Beer Zone doesn't get a parallax-img: its photo's dominant subject is the
-     large "BEER ZONE" sign text, and object-fit:cover's crop on a tall/narrow
-     phone screen zooms in far enough to make that text look broken/illegible
-     (confirmed by screenshot — a band photo tolerates that crop fine, sign
-     lettering doesn't). "contain" trades the motion for showing it intact. */
+  /* Below 720px .live's .parallax-img fully covers its CSS background — that
+     background is only the pre-JS/JS-disabled paint. Beer Zone has no such
+     layer and stays fully static here: its photo's readable "BEER ZONE" sign
+     text would drift under the overlaid heading text at some point in any
+     scroll-linked motion, which looks broken regardless of how the crop is
+     handled — a problem no crop/stretch tuning fixes, only not moving it does. */
   .beerzone{ background-size:contain; background-position:center; }
+  .beerzone-clip{ width:130px; max-width:34vw; margin-top:1.6rem; }
 }
 
 /* ---------- Hero video ---------- */
