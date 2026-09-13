@@ -244,3 +244,24 @@ if ('IntersectionObserver' in window && reelVideos.length){
 } else {
   reelVideos.forEach(v => v.play().catch(()=>{}));
 }
+
+// ---------- Mobile parallax (background-attachment:fixed is disabled below
+// 720px — see style.css — because it's unreliable/janky on mobile browsers) ----------
+const parallaxImgs = Array.from(document.querySelectorAll('.parallax-img'));
+if (parallaxImgs.length && window.matchMedia('(max-width: 720px)').matches) {
+  const targets = parallaxImgs.map(img => ({ img, section: img.closest('section') }));
+  let ticking = false;
+  const update = () => {
+    ticking = false;
+    targets.forEach(({ img, section }) => {
+      const rect = section.getBoundingClientRect();
+      if (rect.bottom < 0 || rect.top > window.innerHeight) return; // offscreen
+      const progress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height); // ~0..1 over its scroll range
+      img.style.transform = `translate3d(0, ${(progress - 0.5) * 60}px, 0)`;
+    });
+  };
+  window.addEventListener('scroll', () => {
+    if (!ticking) { requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  update();
+}
