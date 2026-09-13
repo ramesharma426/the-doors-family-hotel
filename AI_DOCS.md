@@ -60,22 +60,23 @@ This structure is rendered twice: **`/`** (English, `lang="en"`) and **`/ne`** (
 no language-switcher UI; `/ne` is reachable only by typing/linking the URL directly, and
 each page carries an `hreflang` alternate pointing at the other (see §6).
 
-1. **Nav** — fixed top bar: logo + wordmark, links to About / Rock 'n' Roll Zone / Experience / Menu / Live Music / Events / Gallery / Guests / Team / Visit Us / Map. Mobile: hamburger toggle, slide-down menu.
+1. **Nav** — fixed top bar: logo + wordmark, links to About / Rock 'n' Roll Zone / Experience / Menu / Live Music / Events / Beer Zone / Gallery / Guests / Team / Visit Us / Map. Mobile: hamburger toggle, slide-down menu.
 2. **Sticky social rail** — fixed bottom-right, vertical stack: WhatsApp, Facebook, Instagram, TikTok. Auto-hides while the Menu section is in viewport (see §4).
 3. **Hero** (`#home`) — full-viewport looping background video (falls back to a static image if `prefers-reduced-motion`), badge logo, quote ("Show me the way to the next whiskey bar"; Nepali page uses an adapted line, not a literal translation), tag line ("Outdoor Seating · Cozy Cottages · Live Music"), 3 CTAs: **View Menu** (`#menu`), **Rate Us** (Google review deep link), **Call Us** (`tel:`).
 4. **About** (`#about`) — "A Rock 'n' Roll Garden": 3 paragraphs of brand story + one photo.
-5. **Rock 'n' Roll Zone** (`#rockzone`) — its own section right after About: intro copy + a "merch & memorabilia in partnership with [@riff_volt](https://www.instagram.com/riff_volt/)" credit badge, then a 6-photo auto-moving carousel with lightbox (band-art wall, The Doors bar, moon & mountains mural, and the red telephone booth) — same carousel component as Gallery (§9 below).
+5. **Rock 'n' Roll Zone** (`#rockzone`) — its own section right after About: intro copy + a "merch & memorabilia in partnership with [@riff_volt](https://www.instagram.com/riff_volt/)" credit badge, then a 5-photo auto-moving carousel with lightbox — real venue photos (`rockzone_exterior/sign/wall/pose/corner.jpg`): the kiosk lit up at night, the "ROCK 'N' ROLL ZONE" sign, the band-art-and-tee wall, a guest posing at it, and a quiet corner — same carousel component as Gallery (§10 below). Replaced an earlier placeholder set of stock-ish photos once real venue photos came in.
 6. **Highlights** (`#highlights`) — "What Awaits You": 5 auto-rotating photo cards — Cozy Cottages, Live Music, Match Days on the Big Screen, Open-Air Dining, Large Parking. (Rock 'n' Roll Zone used to be a 6th card here; it's now the standalone section above.)
 7. **Menu** (`#menu`) — 3-tab switcher (Food / Café & Mocktails / Bar), full item+price listing (§3), download links for Food/Bar menu PDFs. Deep-linkable via `?menu=food|cafe|bar` + `#menu` (see §4).
 8. **Live strip** (`#live`) — "Live Music Every Weekend", fixed-background (parallax) band photo — disabled on mobile via `background-attachment:scroll` since `fixed` is unreliably janky on mobile browsers — "Book a Table" CTA (`tel:`).
 9. **Events** (`#events`) — "Events & Parties": New Year celebrations, birthdays, anniversaries, private parties; photo slider + "Plan Your Event" CTA (`tel:`).
-10. **Gallery** (`#gallery`) — "Around The Garden": 9-photo auto-moving carousel with lightbox.
-11. **Happy Guests** (`#guests`) — 6-photo auto-moving carousel, guest candids.
-12. **Team** (`#team`) — 3-photo auto-moving carousel of staff + caption.
-13. **Video Reel** (`#reel`) — 3 short looping vertical video clips (live stage, aerial night, neon rain), autoplay-on-scroll-into-view via IntersectionObserver.
-14. **Visit Us** (`#visit`) — address / phone / hours summary in 3 columns + "Reserve Your Table" CTA.
-15. **Location** (`#location`) — full-width embedded Google Map iframe with a floating Google-Maps-style info card (name, address, 5★ rating, open-in-maps / directions buttons).
-16. **Footer** — logo lockup, name, quote (repeated), copyright line, small "Created & maintained by Ramesh Sharma" credit link (→ https://sharma-ramesh.com.np).
+10. **Beer Zone** (`#beerzone`) — "The Beer Zone": right after Events. A muted looping background video of a draft pour (`assets/video/clip_beer.mp4`, autoplay-on-scroll like the Video Reel clips, not eager like the Hero) over the kiosk photo (`assets/img/beer_zone.jpg`) as poster/`prefers-reduced-motion` fallback, dark overlay for text legibility, "Grab A Pint" CTA (`tel:`). Same visual language as the Live strip, but video instead of a static parallax photo.
+11. **Gallery** (`#gallery`) — "Around The Garden": 9-photo auto-moving carousel with lightbox.
+12. **Happy Guests** (`#guests`) — 6-photo auto-moving carousel, guest candids.
+13. **Team** (`#team`) — 3-photo auto-moving carousel of staff + caption.
+14. **Video Reel** (`#reel`) — 3 short looping vertical video clips (live stage, aerial night, neon rain), autoplay-on-scroll-into-view via IntersectionObserver.
+15. **Visit Us** (`#visit`) — address / phone / hours summary in 3 columns + "Reserve Your Table" CTA.
+16. **Location** (`#location`) — full-width embedded Google Map iframe with a floating Google-Maps-style info card (name, address, 5★ rating, open-in-maps / directions buttons).
+17. **Footer** — logo lockup, name, quote (repeated), copyright line, small "Created & maintained by Ramesh Sharma" credit link (→ https://sharma-ramesh.com.np).
 
 **Page-load overlay** — a full-screen `#loader` (dark bg, live percentage counted off `document.images` load/error events) covers the page until the native `window.load` event fires, so nothing is visible mid-load. Applies to both `/` and `/ne`.
 
@@ -366,7 +367,8 @@ Downloadable PDFs also exist: `assets/menu/food_menu.pdf`, `assets/menu/bar_menu
 - **Lightbox** — clicking any gallery/carousel image opens a full-screen overlay with that image; closes on click-anywhere or `Escape`.
 - **Card sliders** (Highlights cards) — each card cycles through 2–3 photos automatically every 3.8s, with dot indicators.
 - **Auto-moving carousels** (Gallery / Rock 'n' Roll Zone / Happy Guests / Team) — generic carousel component: 1/2/3 visible slides depending on viewport width and a `v2`/`v3` modifier class, auto-advances every 3.5s, pauses on pointer-hover, dot navigation, recalculates on window resize.
-- **Video reel autoplay** — the hero video and the reel/team clips each `play()` independently once ≥40% visible in viewport (`IntersectionObserver`), and `pause()` when scrolled away — avoids autoplaying offscreen video. (No cross-video concurrency cap — tried once for a suspected mobile decode-stutter issue, reverted because it made a multi-video grid like the reel only ever play one clip at a time.)
+- **Video reel autoplay** — the hero video, the Beer Zone video, and the reel/team clips each `play()` independently once ≥40% visible in viewport (`IntersectionObserver`), and `pause()` when scrolled away — avoids autoplaying offscreen video. (No cross-video concurrency cap — tried once for a suspected mobile decode-stutter issue, reverted because it made a multi-video grid like the reel only ever play one clip at a time.) The hero video also has the HTML `autoplay` attribute (plays immediately on load); Beer Zone doesn't, so it only starts once scrolled into view.
+- **Background-video-over-photo layering** (Hero, Beer Zone) — the CSS background photo is the instant-paint layer, the `<video>` sits on top at full opacity once it loads, and a separate real overlay element (not a `::before`) handles the dark dimming — a pseudo-element painting *before* the video in DOM order would render underneath it, not over it. Giving the video partial opacity here (rather than keeping it fully opaque) lets the photo bleed through and double-expose with it — a bug hit once on Beer Zone and fixed by removing the opacity, not by hiding the photo.
 - **Smooth/inertial scroll** — [Lenis](https://github.com/darkroomengineering/lenis) (vendored at `public/js/vendor/lenis.min.js`, no npm dependency since the site has no JS bundler), `new Lenis({ anchors: true, autoRaf: true })`. Native `scroll-behavior` is set to `auto` (not `smooth`) so it doesn't race Lenis for the same scroll target; the one place that scrolls programmatically (`?menu=` deep-link) calls `lenis.scrollTo()` instead of `scrollIntoView`, falling back to native scroll if the vendor script fails to load.
 - **Cache-busting** — CSS/JS are loaded with a `?v=YYYYMMDD[letter]` query string (`site.assetVersion`) that's bumped on each deploy, so CDN/browser caches don't serve stale assets after an update. Bump it any time `style.css`/`main.js` content changes.
 
@@ -434,8 +436,8 @@ Downloadable PDFs also exist: `assets/menu/food_menu.pdf`, `assets/menu/bar_menu
 
 | Folder | Contents |
 |---|---|
-| `assets/img/` | 34 photos (garden/cottages, stage/live music, events, gallery candids, guests, team, parking, misc brand moments) |
-| `assets/video/` | 5 clips: `hero_garden.mp4` (hero bg), `clip_live.mp4`, `clip_aerial.mp4`, `clip_neon.mp4` (reel), `team_intro.mp4` (Team carousel) |
+| `assets/img/` | 39 photos (garden/cottages, stage/live music, events, gallery candids, guests, team, parking, Rock 'n' Roll Zone, Beer Zone, misc brand moments) |
+| `assets/video/` | 6 clips: `hero_garden.mp4` (hero bg), `clip_live.mp4`, `clip_aerial.mp4`, `clip_neon.mp4` (reel), `team_intro.mp4` (Team carousel), `clip_beer.mp4` (Beer Zone bg) |
 | `assets/logo/` | Brand badge, lizard mascot (2 color variants), full favicon set (16/32/48/96/180/192/512), plain logo files |
 | `assets/icons/` | `facebook.svg`, `instagram.svg`, `tiktok.svg`, `whatsapp.svg` — all `viewBox="0 0 24 24"`, `fill="#efe6d3"`, used only by the sticky social rail (footer no longer duplicates these) |
 | `assets/fonts/` | Cinzel 600/700, Cormorant Garamond 500/600, IM Fell English 400 — all `.woff2` (Latin only). Plus one Devanagari variable `.woff2` (Noto Serif Devanagari) registered under the *same* three family names via `unicode-range`, so `/ne` picks the right glyphs per-character automatically, including mixed Latin+Devanagari text. `/ne` also resets `letter-spacing` to normal site-wide — the site's wide small-caps tracking visually breaks Devanagari conjunct clusters. |
