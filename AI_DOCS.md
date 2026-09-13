@@ -55,21 +55,29 @@ in the footer.
 
 ## 2. Site Structure (page sections, in order)
 
-1. **Nav** — fixed top bar: logo + wordmark, links to About / Experience / Menu / Live Music / Events / Gallery / Guests / Team / Visit Us / Map. Mobile: hamburger toggle, slide-down menu.
+This structure is rendered twice: **`/`** (English, `lang="en"`) and **`/ne`** (Nepali,
+`lang="ne"`) — same sections/order/images, translated copy and a Devanagari menu. There is
+no language-switcher UI; `/ne` is reachable only by typing/linking the URL directly, and
+each page carries an `hreflang` alternate pointing at the other (see §6).
+
+1. **Nav** — fixed top bar: logo + wordmark, links to About / Rock 'n' Roll Zone / Experience / Menu / Live Music / Events / Gallery / Guests / Team / Visit Us / Map. Mobile: hamburger toggle, slide-down menu.
 2. **Sticky social rail** — fixed bottom-right, vertical stack: WhatsApp, Facebook, Instagram, TikTok. Auto-hides while the Menu section is in viewport (see §4).
-3. **Hero** (`#home`) — full-viewport looping background video (falls back to a static image if `prefers-reduced-motion`), badge logo, quote ("Show me the way to the next whiskey bar"), tag line ("Outdoor Seating · Cozy Cottages · Live Music"), 3 CTAs: **View Menu** (`#menu`), **Rate Us** (Google review deep link), **Call Us** (`tel:`).
+3. **Hero** (`#home`) — full-viewport looping background video (falls back to a static image if `prefers-reduced-motion`), badge logo, quote ("Show me the way to the next whiskey bar"; Nepali page uses an adapted line, not a literal translation), tag line ("Outdoor Seating · Cozy Cottages · Live Music"), 3 CTAs: **View Menu** (`#menu`), **Rate Us** (Google review deep link), **Call Us** (`tel:`).
 4. **About** (`#about`) — "A Rock 'n' Roll Garden": 3 paragraphs of brand story + one photo.
-5. **Highlights** (`#highlights`) — "What Awaits You": 6 auto-rotating photo cards — Cozy Cottages, Live Music, Match Days on the Big Screen, Open-Air Dining, Rock 'n' Roll Zone, Large Parking.
-6. **Menu** (`#menu`) — 3-tab switcher (Food / Café & Mocktails / Bar), full item+price listing (§3), download links for Food/Bar menu PDFs. Deep-linkable via `?menu=food|cafe|bar` + `#menu` (see §4).
-7. **Live strip** (`#live`) — "Live Music Every Weekend", fixed-background band photo, "Book a Table" CTA (`tel:`).
-8. **Events** (`#events`) — "Events & Parties": New Year celebrations, birthdays, anniversaries, private parties; photo slider + "Plan Your Event" CTA (`tel:`).
-9. **Gallery** (`#gallery`) — "Around The Garden": 9-photo auto-moving carousel with lightbox.
-10. **Happy Guests** (`#guests`) — 6-photo auto-moving carousel, guest candids.
-11. **Team** (`#team`) — 3-photo auto-moving carousel of staff + caption.
-12. **Video Reel** (`#reel`) — 3 short looping vertical video clips (live stage, aerial night, neon rain), autoplay-on-scroll-into-view via IntersectionObserver.
-13. **Visit Us** (`#visit`) — address / phone / hours summary in 3 columns + "Reserve Your Table" CTA.
-14. **Location** (`#location`) — full-width embedded Google Map iframe with a floating Google-Maps-style info card (name, address, 5★ rating, open-in-maps / directions buttons).
-15. **Footer** — logo lockup, name, quote (repeated), copyright line, small "Created & maintained by Ramesh Sharma" credit link (→ https://sharma-ramesh.com.np).
+5. **Rock 'n' Roll Zone** (`#rockzone`) — its own section right after About: intro copy + a "merch & memorabilia in partnership with [@riff_volt](https://www.instagram.com/riff_volt/)" credit badge, then a 6-photo auto-moving carousel with lightbox (band-art wall, The Doors bar, moon & mountains mural, and the red telephone booth) — same carousel component as Gallery (§9 below).
+6. **Highlights** (`#highlights`) — "What Awaits You": 5 auto-rotating photo cards — Cozy Cottages, Live Music, Match Days on the Big Screen, Open-Air Dining, Large Parking. (Rock 'n' Roll Zone used to be a 6th card here; it's now the standalone section above.)
+7. **Menu** (`#menu`) — 3-tab switcher (Food / Café & Mocktails / Bar), full item+price listing (§3), download links for Food/Bar menu PDFs. Deep-linkable via `?menu=food|cafe|bar` + `#menu` (see §4).
+8. **Live strip** (`#live`) — "Live Music Every Weekend", fixed-background (parallax) band photo — disabled on mobile via `background-attachment:scroll` since `fixed` is unreliably janky on mobile browsers — "Book a Table" CTA (`tel:`).
+9. **Events** (`#events`) — "Events & Parties": New Year celebrations, birthdays, anniversaries, private parties; photo slider + "Plan Your Event" CTA (`tel:`).
+10. **Gallery** (`#gallery`) — "Around The Garden": 9-photo auto-moving carousel with lightbox.
+11. **Happy Guests** (`#guests`) — 6-photo auto-moving carousel, guest candids.
+12. **Team** (`#team`) — 3-photo auto-moving carousel of staff + caption.
+13. **Video Reel** (`#reel`) — 3 short looping vertical video clips (live stage, aerial night, neon rain), autoplay-on-scroll-into-view via IntersectionObserver.
+14. **Visit Us** (`#visit`) — address / phone / hours summary in 3 columns + "Reserve Your Table" CTA.
+15. **Location** (`#location`) — full-width embedded Google Map iframe with a floating Google-Maps-style info card (name, address, 5★ rating, open-in-maps / directions buttons).
+16. **Footer** — logo lockup, name, quote (repeated), copyright line, small "Created & maintained by Ramesh Sharma" credit link (→ https://sharma-ramesh.com.np).
+
+**Page-load overlay** — a full-screen `#loader` (dark bg, live percentage counted off `document.images` load/error events) covers the page until the native `window.load` event fires, so nothing is visible mid-load. Applies to both `/` and `/ne`.
 
 ---
 
@@ -357,9 +365,10 @@ Downloadable PDFs also exist: `assets/menu/food_menu.pdf`, `assets/menu/bar_menu
 - **Mobile nav** — hamburger button toggles `.open` on the nav-links list; any link click closes it again.
 - **Lightbox** — clicking any gallery/carousel image opens a full-screen overlay with that image; closes on click-anywhere or `Escape`.
 - **Card sliders** (Highlights cards) — each card cycles through 2–3 photos automatically every 3.8s, with dot indicators.
-- **Auto-moving carousels** (Gallery / Happy Guests / Team) — generic carousel component: 1/2/3 visible slides depending on viewport width and a `v2`/`v3` modifier class, auto-advances every 3.5s, pauses on pointer-hover, dot navigation, recalculates on window resize.
-- **Video reel autoplay** — the 3 short vertical clips only `play()` once ≥40% visible in viewport (`IntersectionObserver`), and `pause()` when scrolled away — avoids autoplaying offscreen video.
-- **Cache-busting** — CSS/JS are loaded with a `?v=YYYYMMDD` query string that's bumped on each deploy, so CDN/browser caches don't serve stale assets after an update.
+- **Auto-moving carousels** (Gallery / Rock 'n' Roll Zone / Happy Guests / Team) — generic carousel component: 1/2/3 visible slides depending on viewport width and a `v2`/`v3` modifier class, auto-advances every 3.5s, pauses on pointer-hover, dot navigation, recalculates on window resize.
+- **Video reel autoplay** — the hero video and the reel/team clips each `play()` independently once ≥40% visible in viewport (`IntersectionObserver`), and `pause()` when scrolled away — avoids autoplaying offscreen video. (No cross-video concurrency cap — tried once for a suspected mobile decode-stutter issue, reverted because it made a multi-video grid like the reel only ever play one clip at a time.)
+- **Smooth/inertial scroll** — [Lenis](https://github.com/darkroomengineering/lenis) (vendored at `public/js/vendor/lenis.min.js`, no npm dependency since the site has no JS bundler), `new Lenis({ anchors: true, autoRaf: true })`. Native `scroll-behavior` is set to `auto` (not `smooth`) so it doesn't race Lenis for the same scroll target; the one place that scrolls programmatically (`?menu=` deep-link) calls `lenis.scrollTo()` instead of `scrollIntoView`, falling back to native scroll if the vendor script fails to load.
+- **Cache-busting** — CSS/JS are loaded with a `?v=YYYYMMDD[letter]` query string (`site.assetVersion`) that's bumped on each deploy, so CDN/browser caches don't serve stale assets after an update. Bump it any time `style.css`/`main.js` content changes.
 
 ---
 
@@ -369,6 +378,7 @@ Downloadable PDFs also exist: `assets/menu/food_menu.pdf`, `assets/menu/bar_menu
 |---|---|
 | Call | `tel:+9779864671482` |
 | WhatsApp | `https://wa.me/9779864671482` |
+| Rock 'n' Roll Zone merch/memorabilia partner | `https://www.instagram.com/riff_volt/` (@riff_volt) |
 | Rate Us (opens Google's review composer directly) | `https://www.google.com/maps/place/THE+DOOR%27S+FAMILY+HOTEL/data=!4m3!3m2!1s0x39eb49602e945b3b:0x15b090b920ce9c3d!12e1` — note this is Google's `writeAReviewUri` pattern using the raw hex **CID**, not a `ChIJ`-format Place ID; `search.google.com/local/writereview?placeid=` 404s with this business's CID format. |
 | View on Maps | `https://www.google.com/maps/place/THE+DOOR'S+FAMILY+HOTEL/@27.4175072,85.0443358,20.93z/data=!4m6!3m5!1s0x39eb49602e945b3b:0x15b090b920ce9c3d!8m2!3d27.4175402!4d85.0443936!16s%2Fg%2F11p13j2p6m` |
 | Directions | `https://www.google.com/maps/dir/?api=1&destination=27.4175402,85.0443936` |
@@ -387,7 +397,8 @@ Downloadable PDFs also exist: `assets/menu/food_menu.pdf`, `assets/menu/bar_menu
 - **JSON-LD structured data** (`@type: ["Restaurant","BarOrPub"]`) — name, image, url, inLanguage, telephone, servesCuisine, priceRange, address, geo, hasMap, sameAs (FB/IG/TikTok), amenityFeature (Live Music, Outdoor Seating, Parking, Cottages).
   - **Known incomplete vs. actual site content** (flagged in a prior review, not yet applied): missing `foundingDate` (site says "Est. 2018" three times), missing `hasMenu` (site has full on-page menu + PDF downloads), missing `acceptsReservations` (site has explicit "Reserve Your Table"/"Book a Table" CTAs), `amenityFeature` list omits "Big Screen / Match Day Screening" and "Hookah" even though both have dedicated content on the page.
 - **robots.txt:** `Allow: /` for all user-agents + sitemap reference.
-- **sitemap.xml:** single URL entry with `<lastmod>`.
+- **sitemap.xml:** two URL entries (`/` and `/ne`) with `<lastmod>`.
+- **hreflang:** each page declares `<link rel="alternate" hreflang="en|ne" href=...>` plus `x-default` → `/`, so search engines can offer the right language — pure `<head>` metadata, no visible switcher UI on either page.
 
 ---
 
@@ -424,10 +435,10 @@ Downloadable PDFs also exist: `assets/menu/food_menu.pdf`, `assets/menu/bar_menu
 | Folder | Contents |
 |---|---|
 | `assets/img/` | 34 photos (garden/cottages, stage/live music, events, gallery candids, guests, team, parking, misc brand moments) |
-| `assets/video/` | 4 clips: `hero_garden.mp4` (hero bg), `clip_live.mp4`, `clip_aerial.mp4`, `clip_neon.mp4` (reel) |
+| `assets/video/` | 5 clips: `hero_garden.mp4` (hero bg), `clip_live.mp4`, `clip_aerial.mp4`, `clip_neon.mp4` (reel), `team_intro.mp4` (Team carousel) |
 | `assets/logo/` | Brand badge, lizard mascot (2 color variants), full favicon set (16/32/48/96/180/192/512), plain logo files |
 | `assets/icons/` | `facebook.svg`, `instagram.svg`, `tiktok.svg`, `whatsapp.svg` — all `viewBox="0 0 24 24"`, `fill="#efe6d3"`, used only by the sticky social rail (footer no longer duplicates these) |
-| `assets/fonts/` | Cinzel 600/700, Cormorant Garamond 500/600, IM Fell English 400 — all `.woff2` |
+| `assets/fonts/` | Cinzel 600/700, Cormorant Garamond 500/600, IM Fell English 400 — all `.woff2` (Latin only). Plus one Devanagari variable `.woff2` (Noto Serif Devanagari) registered under the *same* three family names via `unicode-range`, so `/ne` picks the right glyphs per-character automatically, including mixed Latin+Devanagari text. `/ne` also resets `letter-spacing` to normal site-wide — the site's wide small-caps tracking visually breaks Devanagari conjunct clusters. |
 | `assets/menu/` | `food_menu.pdf`, `bar_menu.pdf`, `menu_cover.pdf` — user-downloadable |
 | `assets/qr/` | 3 printable QR codes (gitignored, not deployed as part of the site — see §5) |
 
@@ -441,12 +452,12 @@ Downloadable PDFs also exist: `assets/menu/food_menu.pdf`, `assets/menu/bar_menu
 
 ---
 
-## 10. Notes Toward a NestJS Rewrite
+## 10. Current Implementation Notes
 
-Not part of the current implementation — just observations from this audit that are
-likely relevant when re-platforming:
+The NestJS rewrite this section used to plan for is done — this is now how it's built:
 
-- The **menu (§3)** is the one part of this site that's really *data*, not content — ~150 line items across 3 categories, several as pivot-style tables (Mo:Mo, Vodka, Whiskey by pour size). This is the natural candidate for a real DB table + admin-editable records instead of hardcoded markup, since prices/items are the thing most likely to change over time.
-- Everything else (About copy, Highlights cards, Events blurb, Visit info) is closer to static marketing content — could live as simple config/CMS entries rather than needing a relational model.
-- The deep-link contract (`?menu=<key>#menu`) is depended on externally by the three printed QR codes already in circulation — preserve that exact URL shape (or 301-redirect it) if the routing changes.
-- The Google review CID link (§5) and WhatsApp link are hardcoded business identifiers, not derived from anything else — carry them over as-is or as config values.
+- **Routing:** `AppController` has two routes, `GET /` → `views/index.hbs` (`SITE` from `src/content/site.config.ts`) and `GET /ne` → `views/index-ne.hbs` (`SITE_NE` from `src/content/site.ne.config.ts`). `MenuService.getPanels(locale)` switches between `menu.data.ts` (English) and `menu.ne.data.ts` (Nepali) — the menu did become data-driven records as planned, one file per locale rather than a DB table (no admin/editing need has come up yet).
+- **Static export:** `scripts/export-static.ts` boots the Nest app, fetches every route in its `ROUTES` array (currently `['/', '/ne']`) over HTTP, writes each to a flat `docs/*.html` file, then copies `public/` alongside — because the deployed site (GitHub Pages) is plain static files. **Adding a new locale or page means adding its route to both `AppController` and `ROUTES`.**
+- **Dev loop:** `npm run dev` (`ts-node -T src/main.ts`) serves everything live on `:3000`, including `public/` assets directly — CSS/JS edits show up on refresh, no restart needed; `.ts`/`.hbs` changes need the dev server restarted. `npm run build:static` produces the same `docs/` output the live site ships.
+- The deep-link contract (`?menu=<key>#menu`) is still depended on externally by the three printed QR codes already in circulation — preserved exactly as the old static site had it.
+- The Google review CID link (§5) and WhatsApp link are still hardcoded business identifiers in `site.config.ts`, reused as-is in `site.ne.config.ts` (`contact`/`social` fields aren't re-declared per locale, just imported from the English config) — they don't change by language.

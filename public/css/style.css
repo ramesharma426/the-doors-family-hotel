@@ -452,6 +452,7 @@ footer .f-credit a{ color:inherit; }
 
 /* ---------- Events ---------- */
 .events{ background:var(--paper-2); }
+.rockzone{ background:var(--paper-2); }
 .events-grid{
   display:grid; grid-template-columns:1.05fr .95fr; gap:2.6rem; align-items:center;
   margin-top:3rem;
@@ -461,9 +462,22 @@ footer .f-credit a{ color:inherit; }
 }
 .events-text p{ font-size:1.12rem; margin-bottom:1.1rem; }
 .events-text .fell{ font-family:'IMFell'; font-style:italic; color:#5c5142; }
+.partner-credit{
+  display:inline-flex; align-items:center; gap:.4rem; margin-top:.4rem;
+  padding:.55rem 1rem; border:1.6px solid var(--red); border-radius:999px;
+  font-size:.86rem; color:#5c5142; text-decoration:none;
+  transition:background .25s, color .25s;
+}
+.partner-credit span{ font-family:'Cinzel'; font-weight:700; color:var(--red); transition:color .25s; }
+.partner-credit:hover{ background:var(--red); color:var(--paper); }
+.partner-credit:hover span{ color:var(--paper); }
 @media (max-width:900px){
   .events-grid{ grid-template-columns:1fr; }
 }
+
+.rockzone-text{ max-width:760px; margin:2.4rem auto 0; text-align:center; }
+.rockzone-text p{ font-size:1.12rem; margin-bottom:1.1rem; }
+.rockzone-text .fell{ font-family:'IMFell'; font-style:italic; color:#5c5142; }
 
 /* ---------- Brand decorations: lizard & badge ---------- */
 .deco-lizard{
@@ -471,7 +485,7 @@ footer .f-credit a{ color:inherit; }
   transform:rotate(-24deg);
 }
 .menu .section-inner, .highlights .section-inner, .visit .section-inner,
-.events .section-inner, .gallery .section-inner{ position:relative; z-index:1; }
+.events .section-inner, .gallery .section-inner, .rockzone .section-inner{ position:relative; z-index:1; }
 section{ overflow:hidden; }
 
 .menu-lizard{ width:560px; right:-120px; top:120px; opacity:.06; }
@@ -479,6 +493,7 @@ section{ overflow:hidden; }
 .visit-lizard{ width:460px; left:-130px; bottom:-80px; opacity:.05; transform:rotate(18deg) scaleX(-1); }
 .ev-lizard{ width:440px; left:-120px; bottom:-60px; opacity:.06; transform:rotate(20deg) scaleX(-1); }
 .gal-lizard{ width:600px; left:50%; top:45%; margin-left:-300px; opacity:.045; }
+.rz-lizard{ width:460px; left:-130px; top:-60px; opacity:.05; transform:rotate(-24deg) scaleX(-1); }
 
 .live-badge{ height:92px; margin:0 auto 1.4rem; opacity:.95; }
 
@@ -524,9 +539,12 @@ section{ overflow:hidden; }
 
 /* ---------- Aspect-ratio guard: never stretch any media ---------- */
 img, video{ object-position:center; }
-.about-photo, .events-grid img, .team-wrap img, .masonry img{
+.about-photo, .team-wrap img, .masonry img{
   width:100%; height:auto; /* natural aspect ratio, no cropping */
 }
+/* Slider images (incl. inside .events-grid / .rockzone) manage their own
+   sizing via .slider img — a plain width/height:auto here fought that fixed
+   crossfade box and let overflow:hidden clip the taller half of each photo. */
 
 /* ---------- Location map section (Google style) ---------- */
 .location{ background:var(--paper); }
@@ -629,7 +647,7 @@ html{ scroll-padding-top:72px; }
   .f-badge{ height:64px; }
 
   /* decorative lizards scale down so they never dominate */
-  .menu-lizard,.hi-lizard,.gal-lizard,.visit-lizard,.ev-lizard{ width:260px; }
+  .menu-lizard,.hi-lizard,.gal-lizard,.visit-lizard,.ev-lizard,.rz-lizard{ width:260px; }
 }
 
 @media (max-width:400px){
