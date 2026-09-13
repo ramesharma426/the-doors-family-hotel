@@ -511,7 +511,8 @@ footer .f-credit a{ color:inherit; }
   font-size:.86rem; color:#5c5142; text-decoration:none;
   transition:background .25s, color .25s;
 }
-.partner-credit span{ font-family:'Cinzel'; font-weight:700; color:var(--red); transition:color .25s; }
+.partner-credit span{ font-family:'Cinzel'; font-weight:700; color:var(--red); transition:color .25s; display:inline-flex; align-items:center; gap:.25em; }
+.bolt-icon{ width:.85em; height:.85em; flex:none; }
 .partner-credit:hover{ background:var(--red); color:var(--paper); }
 .partner-credit:hover span{ color:var(--paper); }
 @media (max-width:900px){
