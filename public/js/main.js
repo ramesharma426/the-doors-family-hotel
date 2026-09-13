@@ -235,7 +235,7 @@ document.querySelectorAll('a.lbx').forEach(a => {
 });
 
 // ---------- Auto-play reel/team videos when scrolled into view ----------
-const reelVideos = document.querySelectorAll('.hero-video, .beerzone-video, .reel-grid video, .team .c-slide video');
+const reelVideos = document.querySelectorAll('.hero-video, .beerzone-clip video, .reel-grid video, .team .c-slide video');
 if ('IntersectionObserver' in window && reelVideos.length){
   const vobs = new IntersectionObserver(entries => {
     entries.forEach(en => (en.isIntersecting ? en.target.play().catch(()=>{}) : en.target.pause()));

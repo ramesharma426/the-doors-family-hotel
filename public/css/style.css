@@ -305,17 +305,22 @@ section{ position:relative; }
 
 /* ---------- Beer Zone ---------- */
 .beerzone{
-  background:var(--ink) url('../assets/img/beer_zone.jpg') center/cover no-repeat;
-  position:relative; overflow:hidden;
+  background:var(--ink) url('../assets/img/beer_zone.jpg') center/cover fixed no-repeat;
+  position:relative;
 }
-.beerzone-video{
-  position:absolute; inset:0; width:100%; height:100%;
-  object-fit:cover;
+.beerzone::before{ content:""; position:absolute; inset:0; background:rgba(22,18,13,.78); }
+
+/* The pour clip is native 9:16 — framing it at that same ratio (instead of
+   stretching it to cover the wide section behind it) shows the whole glass
+   and tap instead of a cropped-in sliver. Tilted + gold-bordered like a
+   photo tossed on the table, echoing the site's other rotated decorations. */
+.beerzone-clip{
+  width:180px; max-width:46vw; aspect-ratio:9/16; margin:2.2rem auto 0;
+  border:4px solid var(--gold); border-radius:4px; overflow:hidden;
+  box-shadow:0 10px 26px rgba(0,0,0,.55);
+  transform:rotate(-4deg);
 }
-@media (prefers-reduced-motion: reduce){
-  .beerzone-video{ display:none; }
-}
-.beerzone-overlay{ position:absolute; inset:0; background:rgba(22,18,13,.78); }
+.beerzone-clip video{ width:100%; height:100%; object-fit:cover; display:block; }
 
 /* ---------- Gallery ---------- */
 .gallery{ background:var(--paper); }
@@ -422,7 +427,7 @@ footer .f-credit a{ color:inherit; }
   .nav-toggle{ display:block; }
   .cards{ grid-template-columns:1fr; }
   .momo-wrap{ overflow-x:auto; }
-  .live{ background-attachment:scroll; }
+  .live, .beerzone{ background-attachment:scroll; }
 }
 
 /* ---------- Hero video ---------- */
