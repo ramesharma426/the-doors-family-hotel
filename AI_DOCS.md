@@ -408,6 +408,7 @@ Downloadable PDFs also exist: `assets/menu/food_menu.pdf`, `assets/menu/bar_menu
 - **robots.txt:** `Allow: /` for all user-agents + sitemap reference.
 - **sitemap.xml:** two URL entries (`/` and `/ne`) with `<lastmod>`.
 - **hreflang:** each page declares `<link rel="alternate" hreflang="en|ne" href=...>` plus `x-default` → `/`, so search engines can offer the right language — pure `<head>` metadata, no visible switcher UI on either page.
+- **Google Search Console verification:** `<meta name="google-site-verification" content="Cdy23THu17vkId4RkwVTrE0BJL-8b6ixW_9ujOP7bYk">` hardcoded in both `views/index.hbs` and `views/index-ne.hbs` (HTML-tag method, resource `https://thedoorsfamily.com.np/`). Don't remove it even after verification succeeds — Search Console re-checks it stays present to keep ownership verified.
 
 ---
 
